@@ -1,30 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kitchen Kompanian</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="./styles.css" rel="stylesheet">
-    <script src="./app.js"></script>
-  </head>
-  <body>
-    <div id="recipe-page" class="main-page">
-        <h1>Recipes</h1>
-      </div>
-    <nav class="main-nav">
-      <div class="nav-item">
-        <a href="./inventory.html">Inventory</a>
-      </div>
-      <div class="nav-item">
-        <a href="./shopping.html">List</a>
-      </div>
-      <div class="nav-item active">
-        <a href="./recipe.html">Recipe</a>
-      </div>
-      <div class="nav-item">
-        <a href="./profile.html">Profile</a>
+
+<head>
+  <title>Kitchen Kompanian</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="bootstrap/bootstrap.bundle.min.js"></script>
+  <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+  <link href="recipes/recipe.css" rel="stylesheet">
+  <script src="recipes/script.js"></script>
+</head>
+
+<body>
+
+  <!-- Top Nav Bar -->
+  <div id="recipe-page" class="main-page">
+    <nav class="navbar fixed-top bg-light">
+      <div class="container-fluid justify-content-center">
+        <span class="navbar-brand mb-0 h1" id="recipe-title">Recipe</span>
       </div>
     </nav>
-  </body>
+  </div>
+
+  <!-- Body -->
+
+  <div class="recipe-body">
+
+  <div class="recipe-search-bar">
+    <div class="row mx-3 mt-3">
+        <input class="form-control border border-3 border-top-0 border-start-0 border-end-0 w-75" type="text"
+          placeholder="Search" aria-label="default input example">
+        <button type="button" class="search-button btn btn-outline-success">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+        </button>
+    </div>
+  </div>
+
+  <div class="all-recipes">
+    <div class="row mx-3 mt-3">
+      <div class="col">
+        <a href="./recipes/applepie.html">
+          <button type="button" class="recipe-img btn btn-outline-success">
+            <img src="static/apple_pie_image.jpg" class="rounded img-thumbnail" alt="apple pie recipe">
+            <br>
+            <a>Apple Pie</a>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <!-- Bottom Nav Bar -->
+  <nav class="main-nav">
+    <div class="nav-item">
+      <a href="./inventory.html">Inventory</a>
+    </div>
+    <div class="nav-item">
+      <a href="./shopping.html">List</a>
+    </div>
+    <div class="nav-item active">
+      <a href="./recipe.html">Recipe</a>
+    </div>
+    <div class="nav-item">
+      <a href="./profile.html">Profile</a>
+    </div>
+  </nav>
+</body>
+
 </html>
