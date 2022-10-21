@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Lexend");
+  
+body{
+    /*make content touch the edge of page*/
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+}
+#header{
+    /*Very top of page*/
+    background-color: #07a7a2;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+#title{
+    /*Current page's name*/
+    color: #fff;
+    font-family: "Lexend", sans-serif;
+    text-align: center;
+    font-size: 40px;
+}
+#tophalf{
+    /*contains profile picture and name*/
+    background-color: #fff;
+    width: 100%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border-bottom: #000 solid 2px;
+}
+#imagecrop{
+    /*crops the image into a circle*/
+    width: 200px;
+    height: 200px;
+    display: block;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#name{
+    /*current user's name*/
+    text-align: center;
+    font-family: "Lexend", sans-serif;
+    font-size: 30px;
+}
+.buttons{
+    /*buttons on the lower half, Households, Settings, and Accounts*/
+    background-color: #fff;
+    width: 100%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    border: none;
+    font-size: 25px;
+    font-family: "Lexend", sans-serif;
+    border-bottom: #707070 solid 2px;
+}
+#firstButton{
+    border-top: #707070 solid 2px;
+}
+.buttons:hover{
+    background-color: #d0d0d0;
+}
+#back{
+    color: #000;
+    text-decoration: none;
+    font-family: "Lexend", sans-serif;
+    font-size: 20px;
+    margin-bottom: 2%;
+}

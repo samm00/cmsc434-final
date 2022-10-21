@@ -1,30 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Kitchen Kompanian</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="./styles.css" rel="stylesheet">
-    <script src="./app.js"></script>
-  </head>
-  <body>
-    <div id="profile-page" class="main-page">
-      <h1>Profile</h1>
-    </div>
-    <nav class="main-nav">
-      <div class="nav-item">
-        <a href="./inventory.html">Inventory</a>
-      </div>
-      <div class="nav-item">
-        <a href="./shopping.html">List</a>
-      </div>
-      <div class="nav-item">
-        <a href="./recipe.html">Recipe</a>
-      </div>
-      <div class="nav-item active">
-        <a href="./profile.html">Profile</a>
-      </div>
-    </nav>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Kitchen Kompanion</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./profile_files/profile_style.css" rel="stylesheet">
+        <link href="./styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="header">
+            <h1 id="title">Profile</h1>
+        </div>
+        <div id="tophalf">
+            <!-- show profile picture and user name -->
+            <div id="imagecrop"><img id="ppic" src="./profile_files/images/Example.jpg" height="200px" /></div>
+            <h2 id="name">FirstName LastName</h2>
+        </div>
+        <div id="bottomhalf">
+            <!-- show option buttons -->
+            <a href="./profile_files/profile_household.html"><button class="buttons">Household</button></a>
+            <a href="./profile_files/profile_settings.html"><button class="buttons">Settings</button></a>
+            <a href="./profile_files/profile_accounts.html"><button class="buttons">Change Account/Logout</button></a>
+        </div>
+
+        <!-- nav bar -->
+        <nav class="main-nav">
+            <div class="nav-item">
+              <a href="./inventory.html">Inventory</a>
+            </div>
+            <div class="nav-item">
+              <a href="./shopping.html">List</a>
+            </div>
+            <div class="nav-item">
+              <a href="./recipe.html">Recipe</a>
+            </div>
+            <div class="nav-item active">
+              <a href="./profile.html">Profile</a>
+            </div>
+          </nav>
+    </body>
 </html>
