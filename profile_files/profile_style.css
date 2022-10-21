@@ -17,7 +17,7 @@ body{
     color: #fff;
     font-family: "Lexend", sans-serif;
     text-align: center;
-    font-size: 40px;
+    font-size: 20pt;
 }
 #tophalf{
     /*contains profile picture and name*/
@@ -41,7 +41,7 @@ body{
     /*current user's name*/
     text-align: center;
     font-family: "Lexend", sans-serif;
-    font-size: 30px;
+    font-size: 14px;
 }
 .buttons{
     /*buttons on the lower half, Households, Settings, and Accounts*/
@@ -50,7 +50,7 @@ body{
     padding-top: 4%;
     padding-bottom: 4%;
     border: none;
-    font-size: 25px;
+    font-size: ;
     font-family: "Lexend", sans-serif;
     border-bottom: #707070 solid 2px;
 }
@@ -64,6 +64,6 @@ body{
     color: #000;
     text-decoration: none;
     font-family: "Lexend", sans-serif;
-    font-size: 20px;
+    font-size: 11pt;
     margin-bottom: 2%;
 }
