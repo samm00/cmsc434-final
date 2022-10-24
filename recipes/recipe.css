@@ -1,0 +1,55 @@
+.recipe-img {
+    width: 50%;
+    height: 100%;
+}
+
+.recipe-body {
+    height: 700px;
+    padding: 40px 20px;
+    overflow: scroll;
+}
+
+.recipe-details {
+    padding: 10px;
+    text-align: center;
+    background-color: #8ddcd9;
+}
+
+.recipe-ingredients {
+    padding: 20px 0px;
+}
+
+.directions-list {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    padding-bottom: 50px 0px;
+}
+
+.recipe-floating-bottom {
+    float: right;
+}
+
+.recipe-btm-buttons {
+    opacity: 0.25;
+}
+
+.recipe-btm-buttons:hover {
+    opacity: 0.75;
+}
+
+.check {
+    padding: 5px;
+}
+
+a {
+    color: aliceblue;
+}
+
+a:hover {
+    color: aliceblue;
+}
+
+.search-button {
+    margin: 0px 25px;
+    width: 10%;
+}
