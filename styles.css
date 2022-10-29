@@ -2,6 +2,12 @@ body {
   margin: 0;
 }
 
+.heading {
+  font-size: 20pt; 
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
 .main-nav {
   margin: 0;
   padding: 0;
@@ -10,32 +16,30 @@ body {
   width: 100%;
   height: 10%;
   overflow: hidden;
-  background-color: #333;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 .nav-item {
-  width: 25%
+  width: 25%;
+  color: black;
 }
 
 .nav-item a {
   display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
+  color: inherit;
   text-decoration: none;
 }
+
+.nav-item .nav-icon {
+  height: 50%;
+  margin-bottom: 3pt;
+}
   
-.nav-item a:hover:not(.active) {
-  background-color: #111;
+.active {
+  color: #07a7a2;
+  font-weight: bold;
 }
 
-.nav-item.active {
-  background-color: #07a7a2;
-}
-
-.list-group {
-  list-style: none
-}
 

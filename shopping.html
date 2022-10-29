@@ -5,37 +5,112 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="./styles.css" rel="stylesheet">
-    <script src="./app.js"></script>
+    <script>
+      let tasks = [{name: "Milk", done: false, id: "task-item-0"}, 
+                   {name: "Eggs", done: false, id: "task-item-1"}, 
+                   {name: "Bread", done: false, id: "task-item-2"}];
+
+      let index = tasks.length;
+
+      $(document).ready(function(){
+        populateList();
+
+        $("#add").click(addNew);
+
+        $("#new-task-name").on('keypress', function(e) {
+          if(e.keyCode == 13){
+            addNew()
+          }
+        })
+      });
+
+      function populateList() {
+        tasks.forEach((task) => {
+          renderTask(task)
+        })
+      }
+
+      function renderTask(task) {
+        let list = $("#task-list")
+        let checkbox = '<input type="checkbox" class="check" style="margin-right: 10px"></input>'
+        let close = '<button class="btn-close" style="float: right">'
+
+        let li = '<li id="'+ task.id + '" class="list-group-item">'+ checkbox + task.name + close +'</li>'
+
+        list.append(li)
+
+        $("#" + task.id + " .check").on('change', updateTask)
+        $("#" + task.id + " .btn-close").on('click', deleteTask)
+      }
+
+      function deleteTask(){
+        let parent = $(this).parent()
+        let id = parent[0].id;
+        
+        tasks = tasks.filter(task => task.id !== id);
+        
+        parent.remove();
+      }
+
+      function updateTask() {
+        let parent = $(this).parent()
+        let id = parent[0].id;
+        let task = tasks.find(task => task.id === id);
+        task.done = !task.done;
+        if (task.done) {
+          parent.addClass(["completed", "list-group-item-light"])
+        } else {
+          parent.removeClass(["completed", "list-group-item-light"])
+        }
+      }
+
+      function addNew(){
+        let input = $("#new-task-name").val();
+        let id = "task-item-" + ++index;
+        let newTask = {name: input.trim(), done: false, id: id}
+        tasks.push(newTask);
+
+        renderTask(newTask);
+
+        $("#new-task-name").val("");
+      }
+    </script>
   </head>
   <body>
-    <div id="shopping-page" class="main-page">
-      <h1>Shopping List</h1>
+    <div id="shopping list" class="container-fluid mt-2">
+      <h1 class="heading">Shopping List</h1>
+
       <div class="input-group mb-2">
         <input type="text" class="form-control" id="new-task-name" placeholder="Add new item...">
         <button id="add" class="input-group-text">
           <span class="input-group-append">+</button>
         </button>
-        <ul class="list-group">
-          <li id="item1" class="list-group-item">
-            <input type="checkbox" class="check" style="margin-right: 10px"></input>
-            Food
-            <button class="btn-close" style="float: right">x</button>
-          </li>
-        </ul>
       </div>
+
+      <ul id="task-list" class="list-group">
+        
+      </ul>
     </div>
+
+    <!-- Bottom Nav Bar -->
     <nav class="main-nav">
       <div class="nav-item">
+        <img class="nav-icon" src=".\static\icons\refrigerator.svg">
         <a href="./inventory.html">Inventory</a>
       </div>
       <div class="nav-item active">
+        <img class="nav-icon" src=".\static\icons\listcheck-active.svg">
         <a href="./shopping.html">List</a>
       </div>
       <div class="nav-item">
+        <img class="nav-icon" src=".\static\icons\book.svg">
         <a href="./recipe.html">Recipe</a>
       </div>
       <div class="nav-item">
+        <img class="nav-icon" src=".\static\icons\user.svg">
         <a href="./profile.html">Profile</a>
       </div>
     </nav>
