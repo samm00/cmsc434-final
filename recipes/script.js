@@ -23,3 +23,18 @@ function crossOut(id){
         elem.style = "color: gray;"
     }
 }
+
+function search() {
+    let input = document.getElementById('recipe-searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('recipe-option');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+}
