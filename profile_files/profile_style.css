@@ -27,6 +27,28 @@ body{
     padding-bottom: 4%;
     border-bottom: #000 solid 2px;
 }
+#household{
+    /*contains profile picture and name*/
+    background-color: #fff;
+    width: 100%;
+}
+.member{
+    font-family: "Lexend", sans-serif;
+    font-size: 11pt;
+    border-top: #707070 solid 1px;
+    padding: 2%;
+}
+.member_name{
+    font-size: 14pt;
+}
+.member_desc{
+    clear: left;
+    margin-left: 2%;
+}
+.ppic_house{
+    float: left;
+    margin-right: 3%;
+}
 #imagecrop{
     /*crops the image into a circle*/
     width: 200px;
@@ -41,7 +63,7 @@ body{
     /*current user's name*/
     text-align: center;
     font-family: "Lexend", sans-serif;
-    font-size: 14px;
+    font-size: 14pt;
 }
 .buttons{
     /*buttons on the lower half, Households, Settings, and Accounts*/
@@ -50,7 +72,7 @@ body{
     padding-top: 4%;
     padding-bottom: 4%;
     border: none;
-    font-size: ;
+    font-size: 14pt;
     font-family: "Lexend", sans-serif;
     border-bottom: #707070 solid 2px;
 }
