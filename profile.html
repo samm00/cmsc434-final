@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Kitchen Kompanion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./profile_files/profile_script.js"></script>
         <link href="./profile_files/profile_style.css" rel="stylesheet">
         <link href="./styles.css" rel="stylesheet">
     </head>
@@ -14,30 +15,76 @@
         </div>
         <div id="tophalf">
             <!-- show profile picture and user name -->
-            <div id="imagecrop"><img id="ppic" src="./profile_files/images/Profile_Pic.png" height="200px" /></div>
+            <div id="imagecrop"><img id="ppic" src="./profile_files/images/Profile_Pic.png" height="150px" /></div>
             <h2 id="name">FirstName LastName</h2>
         </div>
         <div id="bottomhalf">
             <!-- show option buttons -->
-            <a href="./profile_files/profile_household.html"><button class="buttons">Household</button></a>
-            <a href="./profile_files/profile_settings.html"><button class="buttons">Settings</button></a>
-            <a href="./profile_files/profile_accounts.html"><button class="buttons">Change Account/Logout</button></a>
+            <button onclick="openHousehold()" class="buttons">Household</button>
+            <button onclick="openSettings()" class="buttons">Settings</button>
+            <button onclick="openChangeAccounts()" class="buttons">Change Account</button>
         </div>
 
-        <!-- nav bar -->
+        <!--Household menu-->
+        <div id="household" style="display: none;">
+          <div class="member">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Lettuce B. Frank</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: Vegetarian</p>
+            <p class="member_desc">Preferences: Greens</p>
+          </div>
+
+          <div class="member">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Kandy Kane</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: Peanut Allergy, Lactose Intolerant</p>
+            <p class="member_desc">Preferences: Sweets</p>
+          </div>
+
+          <div class="member">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Tom A. Tow</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: None</p>
+            <p class="member_desc">Preferences: None</p>
+          </div>
+          <button onclick="returnToMenu()" class="buttons" style="border-top: #707070 solid 2px;">Return</button>
+        </div>
+
+        <!--Settings menu-->
+        <div id="settings" style="display: none;">
+          <!-- settings buttons -->
+          <button class="buttons">Setting 1</button>
+          <button class="buttons">Setting 2</button>
+          <button class="buttons">Setting 3</button>
+          <button onclick="returnToMenu()" class="buttons">Return</button>
+        </div>
+
+        <!--Change account menu-->
+        <div id="change" style="display: none;">
+            <button id="firstButton" class="buttons">Account 1</button>
+            <button class="buttons">Account 2</button>
+            <button class="buttons">Account 3</button>
+            <button onclick="returnToMenu()" class="buttons">Return</button>
+        </div>
+
+        <!-- Bottom Nav Bar -->
         <nav class="main-nav">
-            <div class="nav-item">
-              <a href="./inventory.html">Inventory</a>
-            </div>
-            <div class="nav-item">
-              <a href="./shopping.html">List</a>
-            </div>
-            <div class="nav-item">
-              <a href="./recipe.html">Recipe</a>
-            </div>
-            <div class="nav-item active">
-              <a href="./profile.html">Profile</a>
-            </div>
-          </nav>
+          <div class="nav-item">
+            <img class="nav-icon" src=".\static\icons\refrigerator.svg">
+            <a href="./inventory.html">Inventory</a>
+          </div>
+          <div class="nav-item">
+            <img class="nav-icon" src=".\static\icons\listcheck.svg">
+            <a href="./shopping.html">List</a>
+          </div>
+          <div class="nav-item">
+            <img class="nav-icon" src=".\static\icons\book.svg">
+            <a href="./recipe.html">Recipe</a>
+          </div>
+          <div class="nav-item active">
+            <img class="nav-icon" src=".\static\icons\user-active.svg">
+            <a href="./profile.html">Profile</a>
+          </div>
+        </nav>
     </body>
 </html>
