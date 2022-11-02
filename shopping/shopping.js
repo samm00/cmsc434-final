@@ -1,10 +1,22 @@
-let items = [{name: "Milk", done: false, id: "task-item-0"}, 
-             {name: "Eggs", done: false, id: "task-item-1"}, 
-             {name: "Bread", done: false, id: "task-item-2"}];
+let list = {
+    1: [{name: "Milk", done: false, id: "task-item-0"}, 
+        {name: "Eggs", done: false, id: "task-item-1"}, 
+        {name: "Bread", done: false, id: "task-item-2"}]
+}
+
+let items = list[1];
 
 let index = items.length;
 
+if (!localStorage.getItem('shoppingList')) {
+    localStorage.setItem('shoppingList', JSON.stringify(list));
+}
+
 $(document).ready(function(){
+    list = JSON.parse(localStorage.getItem('shoppingList'))
+    items = list[1]
+    index = items.length
+
     populateList();
 
     $("#add").click(addNew);
@@ -39,9 +51,12 @@ function deleteItem(){
     let parent = $(this).parent()
     let id = parent[0].id;
 
-    item = items.filter(item => item.id !== id);
+    items = items.filter(item => item.id !== id);
 
     parent.remove();
+
+    list[1] = items
+    localStorage.setItem('shoppingList', JSON.stringify(list))
 }
 
 function updateItem() {
@@ -54,15 +69,20 @@ function updateItem() {
     } else {
         parent.removeClass(["completed", "list-group-item-light"])
     }
+    list[1] = items
+    localStorage.setItem('shoppingList', JSON.stringify(list))
 }
 
 function addNew(){
     let input = $("#new-item-name").val();
     let id = "list-item-" + ++index;
     let newItem = {name: input.trim(), done: false, id: id}
-    tasks.push(newItem);
+    items.push(newItem);
 
     renderItem(newItem);
 
-    $("#new-task-name").val("");
+    $("#new-item-name").val("");
+
+    list[1] = items
+    localStorage.setItem('shoppingList', JSON.stringify(list))
 }
