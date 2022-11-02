@@ -2,16 +2,110 @@
 <html>
   <head>
     <title>Kitchen Kompanian</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link href="./styles.css" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet" />
+    <link href="./inventory.css" rel="stylesheet" />
     <script src="./app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lexend"
+    />
   </head>
   <body>
     <div id="inventory-page" class="main-page">
       <h1>Inventory</h1>
     </div>
+
+    <div class="item-rows">
+      <h3>Essentials</h3>
+      <ul id="essentials">
+        <li>
+          <div class="card">
+            <img src="inventory/eggs.jpg" alt="Avatar" />
+            <div class="container">
+              <h4><b>Eggs</b></h4>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="card">
+            <img src="inventory/milk.png" alt="Avatar" />
+            <div class="container">
+              <h4><b>Milk</b></h4>
+            </div>
+          </div>
+        </li>
+        <button class="but add">+</button>
+      </ul>
+
+      <h3>Dairy</h3>
+      <ul id="dairy">
+        <li>
+          <div class="card">
+            <img src="inventory/yoghurt.png" alt="Avatar" />
+            <div class="container">
+              <h4><b>Yoghurt</b></h4>
+            </div>
+          </div>
+        </li>
+        <button class="but add">+</button>
+      </ul>
+    </div>
+
+    <div id="new_item">
+      <div class="card large">
+        <div class="center">
+          <input
+            type="image"
+            src="inventory/no_img.png"
+            id="old_img"
+            onclick="upload()"
+            accept="image/png, image/jpeg"
+          />
+          <input type="file" id="new_img" onchange="readURL(this);" />
+          <div class="container">
+            <input
+              type="checkbox"
+              class="but cat_tag"
+              id="es"
+              value="essentials"
+            />
+            <label for="es">Essentials</label>
+            <input type="checkbox" class="but cat_tag" id="dy" value="dairy" />
+            <label for="dy">Dairy</label>
+            <button class="but add_label">+</button><br />
+            <input type="text" id="new_food" placeholder="Food Name" /><br />
+            <input type="checkbox" class="but diet_tag vg" id="vg" value="vg" />
+            <label for="vg">Vg</label>
+            <input type="checkbox" class="but diet_tag v" id="v" value="v" />
+            <label for="v">V</label>
+            <input type="checkbox" class="but diet_tag k" id="k" value="k" />
+            <label for="k">כשר</label>
+            <input type="checkbox" class="but diet_tag h" id="h" value="h" />
+            <label for="h">حلال</label>
+            <input type="checkbox" class="but diet_tag gf" id="gf" value="gf" />
+            <label for="gf">GF</label>
+            <input type="checkbox" class="but diet_tag nf" id="nf" value="nf" />
+            <label for="nf">NF</label>
+            <input type="checkbox" class="but diet_tag sf" id="sf" value="sf" />
+            <label for="sf">SF</label>
+            <button class="but add_label">+</button><br />
+            <input type="text" id="new_qty" placeholder="Quantity" />
+            <input type="text" id="new_qty_unit" placeholder="Unit" /><br />
+            <label for="date">Purchased on: </label>
+            <input type="date" id="date" />
+            <textarea id="notes" placeholder="Notes" rows="4"></textarea>
+          </div>
+        </div>
+        <div class="foot">
+          <button class="but cancel">cancel</button>
+          <button class="but done">done</button>
+        </div>
+      </div>
+    </div>
+
     <nav class="main-nav">
       <div class="nav-item active">
         <a href="./inventory.html">Inventory</a>
@@ -27,4 +121,5 @@
       </div>
     </nav>
   </body>
+  <script src="inventory/inventory.js"></script>
 </html>
