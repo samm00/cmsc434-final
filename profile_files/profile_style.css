@@ -9,8 +9,8 @@ body{
 #header{
     /*Very top of page*/
     background-color: #07a7a2;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding-top: 0.05%;
+    padding-bottom: 0.05%;
 }
 #title{
     /*Current page's name*/
@@ -27,7 +27,11 @@ body{
     padding-bottom: 4%;
     border-bottom: #000 solid 2px;
 }
-#household{
+.menu{
+    margin-bottom: 20%;
+    font-family: "Lexend", sans-serif;
+}
+#household, #housebuttons{
     /*contains profile picture and name*/
     background-color: #fff;
     width: 100%;
@@ -49,10 +53,48 @@ body{
     float: left;
     margin-right: 3%;
 }
+.deleteMem{
+    margin-left: 1%;
+    padding: 3%;
+    font-size: 11pt;
+    background-color: #fff;
+    border: #000 solid 1px;
+}
+.deleteMem:hover, .deleteMem:active{
+    background-color: #d0d0d0;
+    border: #000 solid 1px;
+}
+label{
+    margin-left: 1%;
+    font-size: 14pt;
+}
+.inputs{
+    display: block;
+    font-size: 14pt;
+    margin: 0 auto;
+    margin-top: 1%;
+    width: 90%;
+    border: #000 solid 2px;
+}
+.inputs:focus{
+    outline: none;
+    border: #07a7a2 solid 2px;
+}
+.addButtons{
+    margin-left: 5%;
+    padding: 3%;
+    font-size: 14pt;
+    background-color: #fff;
+    border: #000 solid 1px;
+}
+.addButtons:hover, .addButtons:active{
+    background-color: #d0d0d0;
+    border: #000 solid 1px;
+}
 #imagecrop{
     /*crops the image into a circle*/
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: block;
     overflow: hidden;
     border-radius: 50%;
@@ -79,7 +121,7 @@ body{
 #firstButton{
     border-top: #707070 solid 2px;
 }
-.buttons:hover{
+.buttons:hover, .buttons:active{
     background-color: #d0d0d0;
 }
 #back{

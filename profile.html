@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Kitchen Kompanion</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./profile_files/profile_script.js"></script>
         <link href="./profile_files/profile_style.css" rel="stylesheet">
         <link href="./styles.css" rel="stylesheet">
     </head>
@@ -14,14 +15,81 @@
         </div>
         <div id="tophalf">
             <!-- show profile picture and user name -->
-            <div id="imagecrop"><img id="ppic" src="./profile_files/images/Profile_Pic.png" height="200px" /></div>
-            <h2 id="name">FirstName LastName</h2>
+            <div id="imagecrop"><img id="ppic" src="./profile_files/images/Profile_Pic.png" height="150px" /></div>
+            <h2 id="name">Lettuce B. Frank</h2>
         </div>
-        <div id="bottomhalf">
+        <div class="menu" id="bottomhalf">
             <!-- show option buttons -->
-            <a href="./profile_files/profile_household.html"><button class="buttons">Household</button></a>
-            <a href="./profile_files/profile_settings.html"><button class="buttons">Settings</button></a>
-            <a href="./profile_files/profile_accounts.html"><button class="buttons">Change Account/Logout</button></a>
+            <button onclick="openHousehold()" class="buttons">Household</button>
+            <button onclick="openSettings()" class="buttons">Settings</button>
+            <button onclick="openChangeAccounts()" class="buttons">Change Account</button>
+        </div>
+
+        <!--Household menu-->
+        <div id="household" style="display: none;">
+          <div class="member LettuceB.FrankVegetarianGreens">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Lettuce B. Frank</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: Vegetarian</p>
+            <p class="member_desc">Preferences: Greens</p>
+            <button class="deleteMem" onclick="deleteMember('LettuceB.FrankVegetarianGreens', 'Lettuce B. Frank')">Delete</button>
+          </div>
+
+          <div class="member KandyKanePeanutAllergy,LactoseIntolerantSweets">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Kandy Kane</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: Peanut Allergy, Lactose Intolerant</p>
+            <p class="member_desc">Preferences: Sweets</p>
+            <button class="deleteMem" onclick="deleteMember('KandyKanePeanutAllergy,LactoseIntolerantSweets', 'Kandy Kane')">Delete</button>
+          </div>
+
+          <div class="member TomA.TowNoneNone">
+            <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
+            <h2 class="member_name">Tom A. Tow</h2>
+            <p class="member_desc">Allergies/Dietary Restrictions: None</p>
+            <p class="member_desc">Preferences: None</p>
+            <button class="deleteMem" onclick="deleteMember('TomA.TowNoneNone', 'Tom A. Tow')">Delete</button>
+          </div>
+          
+        </div>
+        <div class="menu" id="housebuttons" style="display: none;">
+          <button onclick="openAdd()" class="buttons" style="border-top: #707070 solid 2px;">Add Member</button>
+          <button onclick="returnToMenu()" class="buttons" >Return</button>
+        </div>
+
+        <!--Add member to household menu-->
+        <div class="menu" id="addMenu" style="display: none;">
+          <form>
+            <br/>
+            <label for="newName">Name:</label>
+            <input class="inputs" id="newName" name="newName" /><br/>
+            <label for="newRestrict">Allergies/Dietary Restrictions:</label><br/>
+            <textarea class="inputs" id="newRestrict" name="newRestrict" rows="3"></textarea><br/>
+            <label for="newPref">Preferences:</label><br/>
+            <textarea class="inputs" id="newPref" name="newPref" rows="3"></textarea>
+          </form>
+          <br/>
+          <button class="addButtons" onclick="closeAdd()">Cancel</button>
+          <button class="addButtons" onclick="addMember()">Add</button>
+        </div>
+
+        <!--Settings menu-->
+        <div class="menu" id="settings" style="display: none;">
+          <!-- settings buttons -->
+          <button class="buttons">Setting 1</button>
+          <button class="buttons">Setting 2</button>
+          <button class="buttons">Setting 3</button>
+          <button onclick="returnToMenu()" class="buttons">Return</button>
+        </div>
+
+        <!--Change account menu-->
+        <div id="change" style="display: none;">
+            <button id="firstButton" class="buttons LettuceB.FrankVegetarianGreens" onclick="changeAccount('Lettuce B. Frank')">Lettuce B. Frank</button>
+            <button class="buttons KandyKanePeanutAllergy,LactoseIntolerantSweets" onclick="changeAccount('Kandy Kane')">Kandy Kane</button>
+            <button class="buttons TomA.TowNoneNone" onclick="changeAccount('Tom A. Tow')">Tom A. Tow</button>
+        </div>
+        <div class="menu" id="changebuttons" style="display: none;">
+          <button onclick="returnToMenu()" class="buttons">Return</button>
         </div>
 
         <!-- Bottom Nav Bar -->

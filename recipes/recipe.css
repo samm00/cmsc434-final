@@ -12,7 +12,7 @@
 .recipe-details {
     padding: 10px;
     text-align: center;
-    background-color: #8ddcd9;
+    background-color: #07a7a2;
 }
 
 .recipe-ingredients {
@@ -52,4 +52,14 @@ a:hover {
 .search-button {
     margin: 0px 25px;
     width: 10%;
+}
+
+.btn, .btn-outline-info {
+    border-color: #07a7a2 !important;
+    color: #07a7a2 !important;
+}
+
+.btn:hover, .btn-outline-info:hover {
+    background-color: #07a7a2 !important;
+    color: aliceblue !important;
 }
