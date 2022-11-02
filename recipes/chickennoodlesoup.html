@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kitchen Kompanian</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
+  <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../styles.css" rel="stylesheet">
+  <link href="./recipe.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Top Nav Bar -->
+  <div id="recipe-page" class="main-page">
+    <nav class="navbar bg-light fixed-top">
+      <div class="container-fluid justify-content-center">
+        <!-- Updates navbar to say the item name -->
+        <span class="navbar-brand mb-0 h1" id="recipe-title">Chicken Noodle Soup</span>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Body -->
+
+  <div class="recipe-body">
+    <div class="recipe-info" id="info">
+      <img src="../static/chicken_noodle_soup_wide.jpg" class="rounded border-3 img-thumbnail" alt="chicken noodle soup recipe">
+      <br>
+      <div class="recipe-details border border-2 mt-2">
+        <b>Servings: </b>6
+        <br>
+        <b>Prep Time: </b>10 mins
+        <br>
+        <b>Cook Time: </b>30 mins
+        <br>
+        <b>Cook Level: </b>Easy
+        <br>
+      </div>
+    </div>
+
+    <div class="recipe-ingredients" id="ingredients">
+      <h1>Ingredients</h1>
+      <table id="ingredients-list">
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row1" onchange="todoChecked('row1')">
+          </td>
+          <td id="row1-text">1 tablespoon unsalted butter</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row2" onchange="todoChecked('row2')">
+          </td>
+          <td id="row2-text">½ cup chopped onion</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row3" onchange="todoChecked('row3')">
+          </td>
+          <td id="row3-text">½ cup chopped celery</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row4" onchange="todoChecked('row4')">
+          </td>
+          <td id="row4-text">4 (14.5 ounce) cans chicken broth</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row5" onchange="todoChecked('row5')">
+          </td>
+          <td id="row5-text">1 (14.5 ounce) can vegetable broth</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row6" onchange="todoChecked('row6')">
+          </td>
+          <td id="row6-text">½ pound chopped cooked chicken breast</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row7" onchange="todoChecked('row7')">
+          </td>
+          <td id="row7-text">1 ½ cups egg noodles</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row8" onchange="todoChecked('row8')">
+          </td>
+          <td id="row8-text">1 cup sliced carrots</td>
+        </tr>
+
+        <tr>
+            <td class="check">
+              <input type="checkbox" id="row9" onchange="todoChecked('row9')">
+            </td>
+            <td id="row9-text">½ teaspoon dried basil</td>
+        </tr>
+
+        <tr>
+            <td class="check">
+              <input type="checkbox" id="row10" onchange="todoChecked('row10')">
+            </td>
+            <td id="row10-text">½ teaspoon dried oregano</td>
+        </tr>
+    
+      </table>
+    </div>
+
+    <div class="recipe-steps" id="directions">
+      <h1>Directions</h1>
+      <table class="directions-list">
+        <tr>
+          <td id="step-1" onclick="crossOut('step-1')"> <b>1.</b> Melt butter in a large pot over medium heat. Add onion and celery and cook until just tender, about 5 minutes. </td>
+        </tr>
+        
+        <tr>
+          <td id="step-2" onclick="crossOut('step-2')"> <b>2.</b>  Add chicken broth, vegetable broth, chicken, egg noodles, carrots, basil, oregano, salt, and pepper. Stir to combine and bring to a boil. </td>
+        </tr>
+
+        <tr>
+          <td id="step-3" onclick="crossOut('step-3')"> <b>3.</b>  Reduce heat and simmer for 20 minutes.  </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="recipe-floating-bottom sticky-bottom">
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#info">Info</a></button>
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#ingredients">Ingredients</a></button>
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#directions">Directions</a></button>
+    </div>
+  </div>
+
+  <!-- Bottom Nav Bar -->
+  <nav class="main-nav">
+    <div class="nav-item">
+      <a href="../inventory.html">Inventory</a>
+    </div>
+    <div class="nav-item">
+      <a href="../shopping.html">List</a>
+    </div>
+    <div class="nav-item active">
+      <a href="../recipe.html">Recipe</a>
+    </div>
+    <div class="nav-item">
+      <a href="../profile.html">Profile</a>
+    </div>
+  </nav>
+</body>
+
+</html>

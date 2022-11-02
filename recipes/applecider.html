@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kitchen Kompanian</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
+  <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="../styles.css" rel="stylesheet">
+  <link href="./recipe.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Top Nav Bar -->
+  <div id="recipe-page" class="main-page">
+    <nav class="navbar bg-light fixed-top">
+      <div class="container-fluid justify-content-center">
+        <!-- Updates navbar to say the item name -->
+        <span class="navbar-brand mb-0 h1" id="recipe-title">Apple Cider</span>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Body -->
+
+  <div class="recipe-body">
+    <div class="recipe-info" id="info">
+      <img src="../static/apple_cider_wide.jpg" class="rounded border-3 img-thumbnail" alt="apple cider recipe">
+      <br>
+      <div class="recipe-details border border-2 mt-2">
+        <b>Servings: </b>16 (1 gallon)
+        <br>
+        <b>Prep Time: </b>15 mins
+        <br>
+        <b>Cook Time: </b>7 hours
+        <br>
+        <b>Cook Level: </b>Expert
+        <br>
+      </div>
+    </div>
+
+    <div class="recipe-ingredients" id="ingredients">
+      <h1>Ingredients</h1>
+      <table id="ingredients-list">
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row1" onchange="todoChecked('row1')">
+          </td>
+          <td id="row1-text">10 large apples, quartered</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row2" onchange="todoChecked('row2')">
+          </td>
+          <td id="row2-text">water, to cover</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row3" onchange="todoChecked('row3')">
+          </td>
+          <td id="row3-text">¾ cup white sugar</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row4" onchange="todoChecked('row4')">
+          </td>
+          <td id="row4-text">1 tablespoon ground cinnamon</td>
+        </tr>
+
+        <tr>
+          <td class="check">
+            <input type="checkbox" id="row5" onchange="todoChecked('row5')">
+          </td>
+          <td id="row5-text">1 tablespoon ground allspice</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="recipe-steps" id="directions">
+      <h1>Directions</h1>
+      <table class="directions-list">
+        <tr>
+          <td id="step-1" onclick="crossOut('step-1')"> <b>1.</b>  Place apples in a large stockpot; cover with water by at least 2 inches. Stir in sugar, cinnamon, and allspice. Bring to a boil over medium-high heat. Boil, uncovered, for 1 hour. Reduce heat; cover and simmer for 2 hours.  </td>
+        </tr>
+        
+        <tr>
+          <td id="step-2" onclick="crossOut('step-2')"> <b>2.</b>  Strain apple mixture through a fine-mesh sieve; discard solids. Drain cider again through a cheesecloth-lined sieve.  </td>
+        </tr>
+
+        <tr>
+          <td id="step-3" onclick="crossOut('step-3')"> <b>3.</b>  Refrigerate cider until cold, about 4 hours.  </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="recipe-floating-bottom sticky-bottom">
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#info">Info</a></button>
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#ingredients">Ingredients</a></button>
+      <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#directions">Directions</a></button>
+    </div>
+  </div>
+
+  <!-- Bottom Nav Bar -->
+  <nav class="main-nav">
+    <div class="nav-item">
+      <a href="../inventory.html">Inventory</a>
+    </div>
+    <div class="nav-item">
+      <a href="../shopping.html">List</a>
+    </div>
+    <div class="nav-item active">
+      <a href="../recipe.html">Recipe</a>
+    </div>
+    <div class="nav-item">
+      <a href="../profile.html">Profile</a>
+    </div>
+  </nav>
+</body>
+
+</html>

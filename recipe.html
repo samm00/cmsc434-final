@@ -30,9 +30,9 @@
 
   <div class="recipe-search-bar">
     <div class="row mx-3 mt-3">
-        <input class="form-control border border-3 border-top-0 border-start-0 border-end-0 w-75" type="text"
+        <input id="recipe-searchbar" class="form-control border border-3 border-top-0 border-start-0 border-end-0 w-75" type="text"
           placeholder="Search" aria-label="default input example">
-        <button type="button" class="search-button btn btn-outline-success">
+        <button type="button" class="search-button btn btn-outline-success" onclick="search()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
             viewBox="0 0 16 16">
             <path
@@ -42,21 +42,39 @@
     </div>
   </div>
 
-  <div class="all-recipes">
-    <div class="row mx-3 mt-3">
-      <div class="col">
+  <div class="all-recipes container-fluid mx-3 mt-3 ">
+    <div class="row">
+      <div class="col-med recipe-option">
         <a href="./recipes/applepie.html">
-          <button type="button" class="recipe-img btn btn-outline-success">
+          <button type="button" class="recipe-img btn btn-outline-info">
             <img src="static/apple_pie_image.jpg" class="rounded img-thumbnail" alt="apple pie recipe">
             <br>
             <a>Apple Pie</a>
           </button>
         </a>
       </div>
+      <div class="col-med recipe-option">
+        <a href="./recipes/chickennoodlesoup.html">
+          <button type="button" class="recipe-img btn btn-outline-info">
+            <img src="static/chicken_noodle_soup_square.jpg" class="rounded img-thumbnail" alt="chicken noodle soup recipe">
+            <br>
+            <a>Chicken Noodle Soup</a>
+          </button>
+        </a>
+      </div>
+      <div class="col-med recipe-option">
+        <a href="./recipes/applecider.html">
+          <button type="button" class="recipe-img btn btn-outline-info">
+            <img src="static/apple_cider_square.jpg" class="rounded img-thumbnail" alt="apple cider recipe">
+            <br>
+            <a>Apple Cider</a>
+          </button>
+        </a>
+      </div>
     </div>
   </div>
+</div>
 
-  </div>
 
   <!-- Bottom Nav Bar -->
   <nav class="main-nav">
