@@ -4,48 +4,73 @@
     <title>Kitchen Kompanian</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./shopping/shopping.js"></script>
+    <script src="./nav.js"></script>
+
     <link href="bootstrap/bootstrap.min.css" rel="stylesheet">  
     <link href="./styles.css" rel="stylesheet">
     <link href="./profile_files/profile_style.css" rel="stylesheet">
 
-    <script src="./app.js"></script>
   </head>
   <body>
-    <div id="shopping-page" class="main-page">
+    <div id="shopping-page" class="main-page container-fluid mt-2">
       <div id="header">
         <h1 id="title">Shopping List</h1>
-    </div>
-    <div class="input-group mb-2">
-        <input type="text" class="form-control" id="new-task-name" placeholder="Add new item...">
+      </div>
+
+      <h2>List 1</h2>
+      <div class="input-group my-2">
+        <input type="text" class="form-control" id="new-item-name" placeholder="Add new item...">
         <button id="add" class="input-group-text">
           <span class="input-group-append">+</button>
         </button>
       </div>
-      <div>
-        <ul class="list-group">
-          <li id="item1" class="list-group-item">
-            <input type="checkbox" class="check" style="margin-right: 10px"></input>
-            Food
-            <button class="btn-close" style="float: right">x</button>
-          </li>
-        </ul>
+      <ul id="shopping-list-1" class="shopping-list list-group">
+      
+      </ul>
+    
+      <h2 class="mt-2">List 2</h2>
+      <div class="input-group my-2">
+        <input type="text" class="form-control" id="new-item-name" placeholder="Add new item...">
+        <button id="add" class="input-group-text">
+          <span class="input-group-append">+</button>
+        </button>
+      </div>
+      <ul id="shopping-list-1" class="shopping-list list-group">
+        <li id="task-item-2" class="list-group-item completed list-group-item-light" contenteditable=""><input type="checkbox" class="check" style="margin-right: 10px">Apples<button class="btn-close" style="float: right"></button></li>
+        <li id="task-item-2" class="list-group-item completed list-group-item-light" contenteditable=""><input type="checkbox" class="check" style="margin-right: 10px">Carrots<button class="btn-close" style="float: right"></button></li>
+        <li id="task-item-2" class="list-group-item completed list-group-item-light" contenteditable=""><input type="checkbox" class="check" style="margin-right: 10px">Tomatoes<button class="btn-close" style="float: right"></button></li>
+      </ul>
+
+      <div class="input-group my-4">
+        <input type="text" class="form-control" id="new-list-name" placeholder="Add new list...">
+        <button id="add" class="input-group-text">
+          <span class="input-group-append">+</button>
+        </button>
       </div>
     </div>
+
+    <!-- Bottom Nav Bar -->
     <nav class="main-nav">
-      <div class="nav-item">
-        <a href="./inventory.html">Inventory</a>
-      </div>
-      <div class="nav-item active">
-        <a href="./shopping.html">List</a>
-      </div>
-      <div class="nav-item">
-        <a href="./recipe.html">Recipe</a>
-      </div>
-      <div class="nav-item">
-        <a href="./profile.html">Profile</a>
-      </div>
+      <a class="nav-item" href="./inventory.html">
+        <img class="nav-icon" src=".\static\icons\refrigerator.svg">
+        <div class="nav-label">Inventory</div>
+      </a>
+      <a class="nav-item active" href="./shopping.html">
+        <img class="nav-icon" src=".\static\icons\listcheck-active.svg">
+        <div class="nav-label">Shopping</div>
+      </a>
+      <a class="nav-item" href="./recipe.html">
+        <img class="nav-icon" src=".\static\icons\book.svg">
+        <div class="nav-label">Recipes</div>
+      </a>
+      <a class="nav-item" href=".\profile.html">
+        <img class="nav-icon" src=".\static\icons\user.svg">
+        <div class="nav-label">Profile</div>
+      </a>
     </nav>
   </body>
 </html>
