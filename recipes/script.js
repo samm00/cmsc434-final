@@ -21,7 +21,7 @@ function addToLocalStorage(id){
         if (window.localStorage.getItem('AddToList') == null || window.localStorage.getItem('AddToList') == "") {
             window.localStorage.setItem('AddToList', elem.innerText);
         } else {
-            window.localStorage.setItem('AddToList', window.localStorage['AddToList'] + "," + elem.innerText);
+            window.localStorage.setItem('AddToList', window.localStorage['AddToList'] + ";" + elem.innerText);
         }
     
         btn.innerText = '\u{2713}';
@@ -70,5 +70,52 @@ if (element != null){
     element.addEventListener("focusout", function() {
         document.getElementById("fake-keyboard").style.display = "none";
     }); 
+    element.addEventListener("select", function() {
+        document.getElementById("fake-keyboard").style.display = "none";
+    }); 
 
+
+}
+
+var count = 1
+
+function addNote(recipe, note, b){
+    if (note == null){
+        note = document.getElementById("notes-input").value
+        document.getElementById("notes-input").value = ""
+    } 
+    var list = document.getElementsByClassName("notes-list")[0]
+
+    newRow = document.createElement('li')
+    newRow.className = "list-group-item"
+    newRow.id = "note-"+count
+    newRow.innerText = note
+
+    closeButton = document.createElement('button')
+    closeButton.className = "btn-close"
+    closeButton.style.float = "right"
+    closeButton.setAttribute('onclick', 'deleteNote('+recipe+',this)')
+
+    newRow.appendChild(closeButton)
+    list.appendChild(newRow)
+
+    count = count + 1
+    if (b == null){
+        if (window.localStorage['notes-'+recipe] == null || window.localStorage['notes-'+recipe] == "") {
+            window.localStorage['notes-'+recipe] = note
+        } else {
+            window.localStorage['notes-'+recipe] += ";"+note
+        }
+    }
+}
+
+function deleteNote(recipe, r){
+    var text = r.parentNode.innerText
+    if (window.localStorage['notes-'+recipe].indexOf(text) == 0){
+        window.localStorage['notes-'+recipe] = window.localStorage['notes-'+recipe].replace(text+";", "")
+        window.localStorage['notes-'+recipe] = window.localStorage['notes-'+recipe].replace(text, "")
+    } else {
+        window.localStorage['notes-'+recipe] = window.localStorage['notes-'+recipe].replace(";"+text, "")
+    }
+    r.parentNode.parentNode.removeChild(r.parentNode);
 }

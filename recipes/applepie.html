@@ -171,6 +171,20 @@
       </table>
     </div>
 
+    <div class="recipe-notes">
+      <h1>Notes</h1>
+      <div class="recipe-search-bar input-group mb-2">
+        <input type="text" class="form-control recipe-searchbar" id="notes-input" placeholder="Use more sugar...">
+        <button id="add" class="input-group-text search-button btn btn-outline-success" onclick="addNote('pie')">
+          +
+        </button>
+      </div>
+
+      <ul class="notes-list list-group">
+      </ul>
+
+    </div>
+    <br>
 
     <div class="recipe-floating-bottom">
       <b>Jump to: </b>
@@ -204,6 +218,36 @@
       <div class="nav-label">Profile</div>
     </a>
   </nav>
+  <div id="fake-keyboard" class="sticky-bottom" style="display: none;">
+    <img src="../static/on-screen-keyboard-light.jpg" alt="" width="100%;" height="100%;">
+  </div>
+
 </body>
+
+<script>
+  
+if (window.localStorage['notes-pie'] != null){
+    var prevNotes = window.localStorage['notes-pie'].split(";")
+    for (var i of prevNotes){
+        console.log(i)
+        if (i != ""){
+          addNote('pie',i, false)
+        }
+      }
+}
+
+const other = document.getElementById("notes-input");
+console.log(other)
+if (other != null){
+    other.addEventListener("focusin", function() {
+        document.getElementById("fake-keyboard").style.display = "block";
+        window.scrollBy(0, 150);
+    }); 
+    other.addEventListener("focusout", function() {
+        document.getElementById("fake-keyboard").style.display = "none";
+    }); 
+}
+
+</script>
 
 </html>

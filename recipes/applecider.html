@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="./script.js"></script>
   <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="../styles.css" rel="stylesheet">
   <link href="./recipe.css" rel="stylesheet">
+  <script src="./script.js"></script>
 </head>
 
 <body>
@@ -131,7 +131,21 @@
       </table>
     </div>
 
+    <div class="recipe-notes">
+      <h1>Notes</h1>
+      <div class="recipe-search-bar input-group mb-2">
+        <input type="text" class="form-control recipe-searchbar" id="notes-input" placeholder="Use more sugar...">
+        <button id="add" class="input-group-text search-button btn btn-outline-success" onclick="addNote('cider')">
+          +
+        </button>
+      </div>
 
+      <ul class="notes-list list-group">
+      </ul>
+
+    </div>
+
+    <br>
     <div class="recipe-floating-bottom">
       <b>Jump to: </b>
       <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#info">Info</a></button>
@@ -143,6 +157,7 @@
     <br>
     <br>
     <br>
+  
   </div>
 
   <!-- Bottom Nav Bar -->
@@ -164,6 +179,37 @@
       <div class="nav-label">Profile</div>
     </a>
   </nav>
+
+
+  <div id="fake-keyboard" class="sticky-bottom" style="display: none;">
+    <img src="../static/on-screen-keyboard-light.jpg" alt="" width="100%;" height="100%;">
+  </div>
+
 </body>
 
+<script>
+  
+if (window.localStorage['notes-cider'] != null){
+    var prevNotes = window.localStorage['notes-cider'].split(";")
+    for (var i of prevNotes){
+        console.log(i)
+        if (i != ""){
+          addNote('cider',i, false)
+        }
+      }
+}
+
+const other = document.getElementById("notes-input");
+console.log(other)
+if (other != null){
+    other.addEventListener("focusin", function() {
+        document.getElementById("fake-keyboard").style.display = "block";
+        window.scrollBy(0, 150);
+    }); 
+    other.addEventListener("focusout", function() {
+        document.getElementById("fake-keyboard").style.display = "none";
+    }); 
+}
+
+</script>
 </html>

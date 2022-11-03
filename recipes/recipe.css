@@ -38,6 +38,7 @@
     border-width: 0px 0px 5px 0px !important;
     border-radius: 0px;
     border-color: #07a7a2 !important;
+    font-size: 12pt;
 }
 
 .recipe-btm-buttons:hover {
@@ -89,3 +90,11 @@ a:hover {
     margin-bottom: 0px;
     padding: 0;
 }
+
+textarea {
+    font-family: inherit;
+    font-size: 12px;
+    border: #07a7a2 solid 3px;
+    width: 100%;
+    border-radius: 5px;
+  }
