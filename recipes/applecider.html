@@ -18,6 +18,11 @@
   <div id="recipe-page" class="main-page">
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid justify-content-center">
+        <a href="../recipe.html">
+          <button class="recipe-back btn btn-sm input-group-append mx-2">
+            <b><</b> Recipe List
+          </button>
+        </a>  
         <!-- Updates navbar to say the item name -->
         <span class="navbar-brand mb-0 h1" id="recipe-title">Apple Cider</span>
       </div>
@@ -46,6 +51,11 @@
       <h1>Ingredients</h1>
       <table id="ingredients-list">
         <tr>
+          <td class="plus">
+            <button id="row1-plus" onclick="addToLocalStorage('row1')" class="plus-btn btn btn-sm input-group-append">
+              <img src="../static/shopping-cart.png" height="20px" width="20px">
+            </button>
+          </td> 
           <td class="check">
             <input type="checkbox" id="row1" onchange="todoChecked('row1')">
           </td>
@@ -53,6 +63,11 @@
         </tr>
 
         <tr>
+          <td class="plus">
+            <button id="row2-plus" onclick="addToLocalStorage('row2')" class="plus-btn btn btn-sm input-group-append">
+              <img src="../static/shopping-cart.png" height="20px" width="20px">
+            </button>
+          </td> 
           <td class="check">
             <input type="checkbox" id="row2" onchange="todoChecked('row2')">
           </td>
@@ -60,6 +75,11 @@
         </tr>
 
         <tr>
+          <td class="plus">
+            <button id="row3-plus" onclick="addToLocalStorage('row3')" class="plus-btn btn btn-sm input-group-append">
+              <img src="../static/shopping-cart.png" height="20px" width="20px">
+            </button>
+          </td> 
           <td class="check">
             <input type="checkbox" id="row3" onchange="todoChecked('row3')">
           </td>
@@ -67,6 +87,11 @@
         </tr>
 
         <tr>
+          <td class="plus">
+            <button id="row4-plus" onclick="addToLocalStorage('row4')" class="plus-btn btn btn-sm input-group-append">
+              <img src="../static/shopping-cart.png" height="20px" width="20px">
+            </button>
+          </td> 
           <td class="check">
             <input type="checkbox" id="row4" onchange="todoChecked('row4')">
           </td>
@@ -74,6 +99,11 @@
         </tr>
 
         <tr>
+          <td class="plus">
+            <button id="row5-plus" onclick="addToLocalStorage('row5')" class="plus-btn btn btn-sm input-group-append">
+              <img src="../static/shopping-cart.png" height="20px" width="20px">
+            </button>
+          </td> 
           <td class="check">
             <input type="checkbox" id="row5" onchange="todoChecked('row5')">
           </td>
@@ -100,11 +130,18 @@
       </table>
     </div>
 
-    <div class="recipe-floating-bottom sticky-bottom">
+
+    <div class="recipe-floating-bottom">
+      <b>Jump back to: </b>
       <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#info">Info</a></button>
       <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#ingredients">Ingredients</a></button>
       <button type="button" class="recipe-btm-buttons btn btn-secondary btn-sm"><a href="#directions">Directions</a></button>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 
   <!-- Bottom Nav Bar -->

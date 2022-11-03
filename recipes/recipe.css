@@ -4,7 +4,8 @@
 }
 
 .recipe-body {
-    height: 700px;
+    height: 80%;
+    width: 100%;
     padding: 40px 20px;
     overflow: scroll;
 }
@@ -26,7 +27,7 @@
 }
 
 .recipe-floating-bottom {
-    float: right;
+    float: left;
 }
 
 .recipe-btm-buttons {
@@ -57,9 +58,16 @@ a:hover {
 .btn, .btn-outline-info {
     border-color: #07a7a2 !important;
     color: #07a7a2 !important;
+    background-size:contain;
 }
 
 .btn:hover, .btn-outline-info:hover {
     background-color: #07a7a2 !important;
     color: aliceblue !important;
 }
+
+.added-to-list {
+    background-color: #07a7a2 !important;
+    color: aliceblue !important;
+}
+
