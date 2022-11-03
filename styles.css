@@ -3,16 +3,26 @@
   src: url(static/fonts/Lexend-Regular.ttf);
 }
 
-
 body {
   margin: 0;
   font-family: Lexend, sans-serif;
 }
 
 .heading {
-  font-size: 20pt; 
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid black;
+  font-size: 20pt !important; 
+  /* padding-bottom: 0.5rem;
+  border-bottom: 1px solid black; */
+  color: white !important;
+  background-color: #07a7a2 !important;
+  font-weight: bold !important;
+}
+
+.back-btn {
+  font-size: 18pt !important;
+  font-weight: bold !important;
+  color: white !important;
+  background: none;
+  border: none;
 }
 
 .page {

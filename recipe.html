@@ -10,20 +10,25 @@
   <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="./styles.css" rel="stylesheet">
   <link href="recipes/recipe.css" rel="stylesheet">
-  <script src="recipes/script.js"></script>
+  <script src="./nav.js"></script>
+  <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Lexend"
+  />
 </head>
 
 <body>
   <br>
   <!-- Top Nav Bar -->
   <div id="recipe-page" class="main-page">
-    <nav class="navbar fixed-top bg-light">
+    <nav class="navbar heading fixed-top bg-light">
       <div class="container-fluid justify-content-center">
-        <span class="navbar-brand mb-0 h1" id="recipe-title">Recipe</span>
+        <h1>Recipe</h1>
       </div>
     </nav>
   </div>
 
+  <br>
   <!-- Body -->
 
   <div class="recipe-body">
@@ -40,7 +45,7 @@
           </svg>
         </button>
       -->
-      <input type="text" class="form-control" id="recipe-searchbar" placeholder="Search">
+      <input type="text" class="form-control recipe-searchbar" id="recipe-searchbar" placeholder="Search">
       <button id="add" class="input-group-text search-button btn btn-outline-success">
         <span class="input-group-append" onclick="search()">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
@@ -53,8 +58,9 @@
   </div>
 
   <div class="all-recipes container">
-    <div class="row">
-      <div class="col-sm-2 recipe-option">
+    <div class="row mt-4">
+      <h3>Foods</h3>
+      <div class="col-6 recipe-option">
         <a href="./recipes/applepie.html">
           <button type="button" class="recipe-img btn btn-outline-info">
             <img src="static/apple_pie_image.jpg" class="rounded img-thumbnail" alt="apple pie recipe">
@@ -63,7 +69,7 @@
           </button>
         </a>
       </div>
-      <div class="col-sm-2 recipe-option">
+      <div class="col-6 recipe-option">
         <a href="./recipes/chickennoodlesoup.html">
           <button type="button" class="recipe-img btn btn-outline-info">
             <img src="static/chicken_noodle_soup_square.jpg" class="rounded img-thumbnail" alt="chicken noodle soup recipe">
@@ -72,7 +78,10 @@
           </button>
         </a>
       </div>
-      <div class="col-sm-2 recipe-option">
+    </div>
+    <div class="row mt-4">
+      <h3>Drinks</h3>
+      <div class="col-6 recipe-option">
         <a href="./recipes/applecider.html">
           <button type="button" class="recipe-img btn btn-outline-info">
             <img src="static/apple_cider_square.jpg" class="rounded img-thumbnail" alt="apple cider recipe">
@@ -83,15 +92,11 @@
       </div>
     </div>
   </div>
+
   <br>
   <br>
   <br>
 </div>
-
-  <div class="fake-keyboard sticky-bottom">
-    <img src="./static/on-screen-keyboard.jpg" alt="" width="100%;" height="100%;" style="display: none;">
-  </div>
-
 
   <!-- Bottom Nav Bar -->
   <nav class="main-nav">
@@ -112,6 +117,14 @@
       <div class="nav-label">Profile</div>
     </a>
   </nav>
+
+  
+  <div id="fake-keyboard" class="sticky-bottom" style="display: none;">
+    <img src="./static/on-screen-keyboard-light.jpg" alt="" width="100%;" height="100%;">
+  </div>
+
 </body>
+
+<script src="recipes/script.js"></script>
 
 </html>

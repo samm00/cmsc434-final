@@ -26,6 +26,7 @@ function addToLocalStorage(id){
     
         btn.innerText = '\u{2713}';
         btn.classList.add('added-to-list');
+        btn.style.width = '100%';
     } 
 }
 
@@ -51,7 +52,23 @@ function search() {
             x[i].style.display="none";
         }
         else {
-            x[i].style.display="list-item";                 
+            x[i].style.display="block";                 
         }
     }
+}
+
+function test(){
+    document.getElementById("fake-keyboard").style.display = "block"; 
+}
+
+const element = document.getElementById("recipe-searchbar");
+console.log(element)
+if (element != null){
+    element.addEventListener("focusin", function() {
+        document.getElementById("fake-keyboard").style.display = "block";
+    }); 
+    element.addEventListener("focusout", function() {
+        document.getElementById("fake-keyboard").style.display = "none";
+    }); 
+
 }
