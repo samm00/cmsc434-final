@@ -164,6 +164,7 @@ label{
 .menuButton:hover, .menuButton:active{
     background-color: #d0d0d0;
 }
+
 #back{
     color: #000;
     text-decoration: none;
@@ -174,6 +175,9 @@ label{
 #changeText{
     font-size: 11pt;
     text-align: center;
+}
+#change{
+    margin-bottom: 20%;
 }
 .right-symbol{
     position: absolute;

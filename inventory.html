@@ -7,22 +7,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="./styles.css" rel="stylesheet" />
     <link href="./inventory.css" rel="stylesheet" />
-    <script src="./app.js"></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Lexend"
     />
   </head>
+
   <body>
     <div id="inventory-page" class="main-page">
       <h1>Inventory</h1>
+      <button class="but add">+</button>
     </div>
 
     <div class="item-rows">
       <h3>Essentials</h3>
       <ul id="essentials">
         <li>
-          <div class="card">
+          <div class="card small">
             <img src="inventory/eggs.jpg" alt="Avatar" />
             <div class="container">
               <h4><b>Eggs</b></h4>
@@ -30,27 +31,25 @@
           </div>
         </li>
         <li>
-          <div class="card">
+          <div class="card small">
             <img src="inventory/milk.png" alt="Avatar" />
             <div class="container">
               <h4><b>Milk</b></h4>
             </div>
           </div>
         </li>
-        <button class="but add">+</button>
       </ul>
 
       <h3>Dairy</h3>
       <ul id="dairy">
         <li>
-          <div class="card">
+          <div class="card small">
             <img src="inventory/yoghurt.png" alt="Avatar" />
             <div class="container">
               <h4><b>Yoghurt</b></h4>
             </div>
           </div>
         </li>
-        <button class="but add">+</button>
       </ul>
     </div>
 
@@ -66,6 +65,8 @@
           />
           <input type="file" id="new_img" onchange="readURL(this);" />
           <div class="container">
+            <input type="text" id="new_food" placeholder="Food Name" /><br />
+
             <input
               type="checkbox"
               class="but cat_tag"
@@ -76,7 +77,10 @@
             <input type="checkbox" class="but cat_tag" id="dy" value="dairy" />
             <label for="dy">Dairy</label>
             <button class="but add_label">+</button><br />
-            <input type="text" id="new_food" placeholder="Food Name" /><br />
+
+            <input type="text" id="new_qty" placeholder="Quantity" />
+            <input type="text" id="new_qty_unit" placeholder="Unit" /><br />
+
             <input type="checkbox" class="but diet_tag vg" id="vg" value="vg" />
             <label for="vg">Vg</label>
             <input type="checkbox" class="but diet_tag v" id="v" value="v" />
@@ -92,8 +96,7 @@
             <input type="checkbox" class="but diet_tag sf" id="sf" value="sf" />
             <label for="sf">SF</label>
             <button class="but add_label">+</button><br />
-            <input type="text" id="new_qty" placeholder="Quantity" />
-            <input type="text" id="new_qty_unit" placeholder="Unit" /><br />
+
             <label for="date">Purchased on: </label>
             <input type="date" id="date" />
             <textarea id="notes" placeholder="Notes" rows="4"></textarea>
@@ -106,23 +109,91 @@
       </div>
     </div>
 
+    <div class="card large" id="info">
+      <button class="but" id="close">✕</button>
+      <div class="right">
+        <input
+          type="image"
+          src="inventory/no_img.png"
+          id="exst_old_img"
+          onclick="upload()"
+          accept="image/png, image/jpeg"
+        />
+        <input type="file" id="exst_new_img" onchange="readURL(this);" />
+      </div>
+      <div class="center">
+        <div class="container">
+          <input type="text" id="exst_food" placeholder="Food Name" /><br />
+
+          <input
+            type="checkbox"
+            class="but cat_tag"
+            id="e_es"
+            value="essentials"
+          />
+          <label for="e_es">Essentials</label>
+          <input type="checkbox" class="but cat_tag" id="e_dy" value="dairy" />
+          <label for="e_dy">Dairy</label>
+          <button class="but add_label">+</button><br />
+
+          <input type="text" id="exst_qty" placeholder="Quantity" />
+          <input type="text" id="exst_qty_unit" placeholder="Unit" /><br />
+
+          <input type="checkbox" class="but diet_tag vg" id="e_vg" value="vg" />
+          <label for="e_vg">Vg</label>
+          <input type="checkbox" class="but diet_tag v" id="e_v" value="v" />
+          <label for="e_v">V</label>
+          <input type="checkbox" class="but diet_tag k" id="e_k" value="k" />
+          <label for="e_k">כשר</label>
+          <input type="checkbox" class="but diet_tag h" id="e_h" value="h" />
+          <label for="e_h">حلال</label>
+          <input type="checkbox" class="but diet_tag gf" id="e_gf" value="gf" />
+          <label for="e_gf">GF</label>
+          <input type="checkbox" class="but diet_tag nf" id="e_nf" value="nf" />
+          <label for="e_nf">NF</label>
+          <input type="checkbox" class="but diet_tag sf" id="e_sf" value="sf" />
+          <label for="e_sf">SF</label>
+          <button class="but add_label">+</button><br />
+
+          <label for="date">Purchased on: </label>
+          <input type="date" id="date" />
+          <textarea id="exst_notes" placeholder="Notes" rows="4"></textarea>
+        </div>
+      </div>
+    </div>
 
     <!-- Bottom Nav Bar -->
     <nav class="main-nav">
       <a class="nav-item active" href="./inventory.html">
-        <img class="nav-icon" src=".\static\icons\refrigerator-active.svg" style="height: 50%; margin-bottom: 3pt; object-fit: fill;">
+        <img
+          class="nav-icon"
+          src=".\static\icons\refrigerator-active.svg"
+          style="height: 50%; margin-bottom: 3pt; object-fit: fill"
+        />
         <div class="nav-label">Inventory</div>
       </a>
       <a class="nav-item" href="./shopping.html">
-        <img class="nav-icon" src=".\static\icons\listcheck.svg" style="height: 50%; margin-bottom: 3pt; object-fit: fill;">
+        <img
+          class="nav-icon"
+          src=".\static\icons\listcheck.svg"
+          style="height: 50%; margin-bottom: 3pt; object-fit: fill"
+        />
         <div class="nav-label">Shopping</div>
       </a>
       <a class="nav-item" href="./recipe.html">
-        <img class="nav-icon" src=".\static\icons\book.svg" style="height: 50%; margin-bottom: 3pt; object-fit: fill;">
+        <img
+          class="nav-icon"
+          src=".\static\icons\book.svg"
+          style="height: 50%; margin-bottom: 3pt; object-fit: fill"
+        />
         <div class="nav-label">Recipes</div>
       </a>
       <a class="nav-item" href=".\profile.html">
-        <img class="nav-icon" src=".\static\icons\user.svg" style="height: 50%; margin-bottom: 3pt; object-fit: fill;">
+        <img
+          class="nav-icon"
+          src=".\static\icons\user.svg"
+          style="height: 50%; margin-bottom: 3pt; object-fit: fill"
+        />
         <div class="nav-label">Profile</div>
       </a>
     </nav>
