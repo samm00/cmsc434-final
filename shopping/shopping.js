@@ -1,88 +1,180 @@
-let list = {
-    1: [{name: "Milk", done: false, id: "task-item-0"}, 
-        {name: "Eggs", done: false, id: "task-item-1"}, 
-        {name: "Bread", done: false, id: "task-item-2"}]
-}
-
-let items = list[1];
-
-let index = items.length;
+let lists = [
+    {
+        name: "Default List",
+        items: [{name: "Milk", done: false, id: "task-item-0-0", qty: "1"}, 
+                {name: "Eggs", done: false, id: "task-item-0-1", qty: "1"}, 
+                {name: "Bread", done: false, id: "task-item-0-2", qty: "2"}],
+        index: 3
+    },
+    {
+        name: "List 2",
+        items: [{name: "Apples", done: true, id: "task-item-1-0", qty: "5"},
+                {name: "Oranges", done: true, id: "task-item-1-1", qty: "3"},
+                {name: "Pomegranate", done: false, id: "task-item-1-2", qty: "1"}],
+        index: 3
+    }
+        
+]
 
 if (!localStorage.getItem('shoppingList')) {
-    localStorage.setItem('shoppingList', JSON.stringify(list));
+    localStorage.setItem('shoppingList', JSON.stringify({lists}));
+} else {
+    lists = JSON.parse(localStorage.getItem('shoppingList'))
+}
+
+if (localStorage.getItem('AddToList')) {
+    getRecipeItems()
 }
 
 $(document).ready(function(){
-    list = JSON.parse(localStorage.getItem('shoppingList'))
-    items = list[1]
-    index = items.length
-
     populateList();
 
-    $("#add").click(addNew);
+    $(".add-btn").click(e => addNew(e.target));
 
-    $("#new-item-name").on('keypress', function(e) {
+    $(".new-item").on('keypress', function(e) {
         if(e.keyCode == 13){
-        addNew()
+            addNew(e.target)
         }
     })
+
+    $("#new-list-btn").click(addList);
 });
 
-function populateList() {
-    items.forEach((item) => {
-        renderItem(item)
-    })
+function updateStorage() {
+    localStorage.setItem('shoppingList', JSON.stringify(lists))
 }
 
-function renderItem(item) {
-    let list = $("#shopping-list-1")
-    let checkbox = '<input type="checkbox" class="check" style="margin-right: 10px"></input>'
-    let close = '<button class="btn-close" style="float: right">'
+function populateList() {
+    lists = JSON.parse(localStorage.getItem('shoppingList'))
 
-    let li = '<li id="'+ item.id + '" class="list-group-item" contenteditable>'+ checkbox + item.name + close +'</li>'
+    lists.forEach(renderList)
+}
 
+function getRecipeItems() {
+    let recipeList = localStorage.getItem("AddToList")
+    let list = lists.length
+    let newItems = recipeList.split(',').map((item, index) => {
+        return {
+            name: item,
+            done: false,
+            id: "task-item-" + list + "-" + index
+        }
+    })
+
+    newList = {name: "From Recipes", items: newItems}
+    lists.push(newList)
+
+    localStorage.setItem("AddToList", "")
+    updateStorage()
+}
+
+function renderList(list, index) {
+    let container = $('#list-container')
+    container.append('<h2 class="mt-2"><input id="list-name-' + index + '" type="text" class="list-name" value="' + list.name + '"></input></h2>')
+    container.append(`<div class="input-group mt-2">
+        <input type="text" class="form-control new-item" id="new-item-name-` + index + `" placeholder="Add new item...">
+        <button id="add-` + index + `" class="input-group-text new-item btn-add input-group-append">
+          <img src=".\\static\\icons\\plus.svg">
+        </button>
+      </div>`)
+    container.append('<ul id="shopping-list-' + index + '" class="shopping-list list-group"></ul>')
+    list['items'].forEach((item) => renderItem(item, index))
+}
+
+function renderItem(item, listIndex) {
+    let list = $("#shopping-list-" + listIndex)
+
+    let close = '<button class="btn-close">'
+    let text = '<input id="' + item.id + '-name"type="text" class="list-item-label" value="' + item.name + '"></input>'
+
+    let checkbox = ""
+    let li = ""
+
+    if (item.done) {
+        checkbox = '<input type="checkbox" class="check completed" style="margin-right: 10px" checked></input>'
+        li = '<li id="'+ item.id + '" class="list-group-item completed">'+ checkbox + text + close +'</li>'
+    } else {
+        checkbox = '<input type="checkbox" class="check" style="margin-right: 10px"></input>'
+        li = '<li id="'+ item.id + '" class="list-group-item">'+ checkbox + text + close +'</li>'
+    }
+    
     list.append(li)
+
 
     $("#" + item.id + " .check").on('change', updateItem)
     $("#" + item.id + " .btn-close").on('click', deleteItem)
+    $("#" + item.id + "-name").on('focusin', (event) => {
+        document.getElementById("fake-keyboard").style.display = "block";
+    })
+    $("#" + item.id + "-name").on('focusout', () => 
+        document.getElementById("fake-keyboard").style.display = "none"
+    )
+    $("#" + item.id + "-name").on('keypress', function(e) {
+        if(e.keyCode == 13){
+            document.getElementById("fake-keyboard").style.display = "none"
+        }
+    })
 }
 
 function deleteItem(){
     let parent = $(this).parent()
     let id = parent[0].id;
+    let list = parseInt($(parent).parent()[0].id.split('-')[2])
 
-    items = items.filter(item => item.id !== id);
+    let items = lists[list]['items'].filter(item => item.id !== id);
 
+    lists[list]['items'] = items
     parent.remove();
 
-    list[1] = items
-    localStorage.setItem('shoppingList', JSON.stringify(list))
+    updateStorage()
 }
 
 function updateItem() {
     let parent = $(this).parent()
     let id = parent[0].id;
-    let item = items.find(item => item.id === id);
+    let list = parseInt($(parent).parent()[0].id.split('-')[2])
+
+    let item = lists[list]['items'].find(item => item.id === id);
+
     item.done = !item.done;
     if (item.done) {
-        parent.addClass(["completed", "list-group-item-light"])
+        parent.addClass(["completed"])
     } else {
-        parent.removeClass(["completed", "list-group-item-light"])
+        parent.removeClass(["completed"])
     }
-    list[1] = items
-    localStorage.setItem('shoppingList', JSON.stringify(list))
+
+    updateStorage()
 }
 
-function addNew(){
-    let input = $("#new-item-name").val();
-    let id = "list-item-" + ++index;
+function addNew(target){
+    let input = ""
+    let listIndex = 0
+    if (target.nodeName == "INPUT") {
+        input = $(target).val();
+        listIndex = $(target)[0].id.split('-')[3]
+    } else {
+        listIndex = $(target)[0].id
+        input = $("#new-item-name-" + listIndex).val();
+    }
+
+    let id = "list-item-" + ++lists[listIndex].index;
     let newItem = {name: input.trim(), done: false, id: id}
-    items.push(newItem);
 
-    renderItem(newItem);
+    lists[listIndex]['items'].push(newItem);
 
-    $("#new-item-name").val("");
+    renderItem(newItem, listIndex);
 
-    list[1] = items
-    localStorage.setItem('shoppingList', JSON.stringify(list))
+    $("#new-item-name" + listIndex).val("");
+
+    updateStorage()
+}
+
+function addList() {
+    let list = {
+        name: "New List",
+        items: [],
+        index: 0
+    }
+    let index = lists.length;
+    renderList(list, index)
 }

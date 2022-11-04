@@ -8,6 +8,23 @@ body {
   font-family: Lexend, sans-serif;
 }
 
+#header{
+  /*Very top of page*/
+  background-color: #07a7a2;
+  height: 50px;
+  position: sticky;
+  top: 0;
+}
+#title{
+  /*Current page's name*/
+  color: #fff;
+  font-family: Lexend, sans-serif;
+  text-align: center;
+  font-size: 20pt;
+  margin-top: 0;
+  padding-top: 2%;
+}
+
 .heading {
   font-size: 20pt !important; 
   /* padding-bottom: 0.5rem;
