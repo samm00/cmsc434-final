@@ -297,3 +297,15 @@ textarea {
   left: 0;
   background-color: #c44;
 }
+
+#essentials .small {
+    background-color: #07a7a2;
+    border: 3px #07a7a2 solid;
+    box-shadow: none;
+}
+
+#dairy .small {
+    background-color: #49c;
+    border: 3px #49c solid;
+    box-shadow: none;
+}
