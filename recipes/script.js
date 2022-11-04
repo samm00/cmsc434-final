@@ -94,7 +94,7 @@ function addNote(recipe, note, b){
     closeButton = document.createElement('button')
     closeButton.className = "btn-close"
     closeButton.style.float = "right"
-    closeButton.setAttribute('onclick', 'deleteNote('+recipe+',this)')
+    closeButton.setAttribute('onclick', "deleteNote('"+recipe+"',this)")
 
     newRow.appendChild(closeButton)
     list.appendChild(newRow)
