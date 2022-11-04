@@ -20,9 +20,9 @@
         </div>
         <div class="menu" id="bottomhalf">
             <!-- show option buttons -->
-            <button onclick="openHousehold()" class="buttons">Household</button>
-            <button onclick="openSettings()" class="buttons">Settings</button>
-            <button onclick="openChangeAccounts()" class="buttons">Change Account</button>
+            <button onclick="openHousehold()" class="menuButton">Household <span class="right-symbol">❯</span></button>
+            <button onclick="openSettings()" class="menuButton">Settings <span class="right-symbol">❯</span></button>
+            <button onclick="openChangeAccounts()" class="menuButton">Change Account <span class="right-symbol">❯</span></button>
         </div>
 
         <!--Household menu-->
@@ -32,7 +32,14 @@
             <h2 class="member_name">Lettuce B. Frank</h2>
             <p class="member_desc">Allergies/Dietary Restrictions: Vegetarian</p>
             <p class="member_desc">Preferences: Greens</p>
-            <button class="deleteMem" onclick="deleteMember('LettuceB.FrankVegetarianGreens', 'Lettuce B. Frank')">Delete</button>
+            <div id="LettuceB.FrankVegetarianGreensDelete">
+              <button class="deleteMem" onclick="openDeleteConfirm('LettuceB.FrankVegetarianGreensDelete', 'LettuceB.FrankVegetarianGreensConfirm')">Delete</button>
+            </div>
+            <div id="LettuceB.FrankVegetarianGreensConfirm" style="display: none;">
+              <p>Are you sure you want to delete this user?</p>
+              <button class="button" onclick="closeDeleteConfirm('LettuceB.FrankVegetarianGreensDelete', 'LettuceB.FrankVegetarianGreensConfirm')">Cancel</button>
+              <button class="deleteMem" onclick="deleteMember('LettuceB.FrankVegetarianGreens', 'Lettuce B. Frank')">Delete</button>
+            </div>
           </div>
 
           <div class="member KandyKanePeanutAllergy,LactoseIntolerantSweets">
@@ -40,21 +47,34 @@
             <h2 class="member_name">Kandy Kane</h2>
             <p class="member_desc">Allergies/Dietary Restrictions: Peanut Allergy, Lactose Intolerant</p>
             <p class="member_desc">Preferences: Sweets</p>
-            <button class="deleteMem" onclick="deleteMember('KandyKanePeanutAllergy,LactoseIntolerantSweets', 'Kandy Kane')">Delete</button>
+            <div id="KandyKanePeanutAllergy,LactoseIntolerantSweetsDelete">
+              <button class="deleteMem" onclick="openDeleteConfirm('KandyKanePeanutAllergy,LactoseIntolerantSweetsDelete', 'KandyKanePeanutAllergy,LactoseIntolerantSweetsConfirm')">Delete</button>
+            </div>
+            <div id="KandyKanePeanutAllergy,LactoseIntolerantSweetsConfirm" style="display: none;">
+              <p>Are you sure you want to delete this user?</p>
+              <button class="button" onclick="closeDeleteConfirm('KandyKanePeanutAllergy,LactoseIntolerantSweetsDelete', 'KandyKanePeanutAllergy,LactoseIntolerantSweetsConfirm')">Cancel</button>
+              <button class="deleteMem" onclick="deleteMember('KandyKanePeanutAllergy,LactoseIntolerantSweets', 'Kandy Kane')">Delete</button>
+            </div>
           </div>
-
+          
           <div class="member TomA.TowNoneNone">
             <img class="ppic_house" src="./profile_files/images/Profile_Pic.png" height="50px" />
             <h2 class="member_name">Tom A. Tow</h2>
             <p class="member_desc">Allergies/Dietary Restrictions: None</p>
             <p class="member_desc">Preferences: None</p>
-            <button class="deleteMem" onclick="deleteMember('TomA.TowNoneNone', 'Tom A. Tow')">Delete</button>
+            <div id="TomA.TowNoneNoneDelete">
+              <button class="deleteMem" onclick="openDeleteConfirm('TomA.TowNoneNoneDelete', 'TomA.TowNoneNoneConfirm')">Delete</button>
+            </div>
+            <div id="TomA.TowNoneNoneConfirm" style="display: none;">
+              <p>Are you sure you want to delete this user?</p>
+              <button class="button" onclick="closeDeleteConfirm('TomA.TowNoneNoneDelete', 'TomA.TowNoneNoneConfirm')">Cancel</button>
+              <button class="deleteMem" onclick="deleteMember('TomA.TowNoneNone', 'Tom A. Tow')">Delete</button>
+            </div>
           </div>
           
         </div>
         <div class="menu" id="housebuttons" style="display: none;">
-          <button onclick="openAdd()" class="buttons" style="border-top: #707070 solid 2px;">Add Member</button>
-          <button onclick="returnToMenu()" class="buttons" >Return</button>
+          <button onclick="openAdd()" class="menuButton" style="border-top: #707070 solid 2px;">Add Member <span class="right-symbol">❯</span></button>
         </div>
 
         <!--Add member to household menu-->
@@ -62,34 +82,85 @@
           <form>
             <br/>
             <label for="newName">Name:</label>
-            <input class="inputs" id="newName" name="newName" /><br/>
+            <input class="addInputs inputs" id="newName" name="newName" placeholder="Name"/><br/>
             <label for="newRestrict">Allergies/Dietary Restrictions:</label><br/>
-            <textarea class="inputs" id="newRestrict" name="newRestrict" rows="3"></textarea><br/>
+            <textarea class="addInputs textareas" id="newRestrict" name="newRestrict" rows="2" placeholder="Restrictions"></textarea><br/>
             <label for="newPref">Preferences:</label><br/>
-            <textarea class="inputs" id="newPref" name="newPref" rows="3"></textarea>
+            <textarea class="addInputs textareas" id="newPref" name="newPref" rows="2" placeholder="Preferences"></textarea>
           </form>
           <br/>
-          <button class="addButtons" onclick="closeAdd()">Cancel</button>
-          <button class="addButtons" onclick="addMember()">Add</button>
+          <button class="addButtons deleteMem" onclick="closeAdd()">Cancel</button>
+          <button class="button addButtons" onclick="addMember()">Add</button>
         </div>
 
         <!--Settings menu-->
         <div class="menu" id="settings" style="display: none;">
           <!-- settings buttons -->
-          <button class="buttons">Setting 1</button>
-          <button class="buttons">Setting 2</button>
-          <button class="buttons">Setting 3</button>
-          <button onclick="returnToMenu()" class="buttons">Return</button>
+          <form id="settingsForm" autocomplete="off">
+            <h2 class="settingsSect">Accessibility (Not Implemented)</h2><hr>
+            
+            <label class="settingsLabel" for="Language">Language:</label>
+            <select id="dropdown" class="settingsInput" name="Language">
+              <option>English</option>
+              <option>Function</option>
+              <option>Not</option>
+              <option>Implemented</option>
+            </select>
+            
+            <br><br>
+            <label class="settingsLabel" for="DarkMode">Dark Mode</label>
+            <label class="slideSwitch settingsInput">
+              <input class="hideCheck" name="Darkmode" type="checkbox">
+              <span class="slideReplace"></span>
+            </label>
+
+            <br><br>
+            <label class="settingsLabel" for="Email">Link Email:</label>
+            <input id="email" class="settingsInput inputs" type="email" placeholder="example@email.com">
+
+            <br><br>
+            <span id="unimple" style="display: none;">Not Implemented</span>
+            <button class="button settingsInput" type="button" onclick="toggleUnimple()">Send Verification</button>
+            <br><br>
+
+            <span id="privacy">
+              <h2 class="settingsSect">Privacy (Not Implemented)</h2><hr>
+              <label class="settingsLabel" for="ShowPref">Show Preferences</label>
+              <label class="slideSwitch settingsInput">
+                <input class="hideCheck" name="Darkmode" type="checkbox" checked>
+                <span class="slideReplace"></span>
+              </label>
+              <br><br>
+
+              <label class="settingsLabel" for="setOne">Unimplemented Settings 1</label>
+              <label class="slideSwitch settingsInput">
+                <input class="hideCheck" name="setOne" type="checkbox">
+                <span class="slideReplace"></span>
+              </label>
+              <br><br>
+
+              <label class="settingsLabel" for="setTwo">Unimplemented Settings 2</label>
+              <label class="slideSwitch settingsInput">
+                <input class="hideCheck" name="setTwo" type="checkbox">
+                <span class="slideReplace"></span>
+              </label>
+              <br><br>
+
+              <label class="settingsLabel" for="setThree">Unimplemented Settings 3</label>
+              <label class="slideSwitch settingsInput">
+                <input class="hideCheck" name="setThree" type="checkbox">
+                <span class="slideReplace"></span>
+              </label>
+          </span>
+          </form>
         </div>
 
         <!--Change account menu-->
         <div id="change" style="display: none;">
-            <button id="firstButton" class="buttons LettuceB.FrankVegetarianGreens" onclick="changeAccount('Lettuce B. Frank')">Lettuce B. Frank</button>
-            <button class="buttons KandyKanePeanutAllergy,LactoseIntolerantSweets" onclick="changeAccount('Kandy Kane')">Kandy Kane</button>
-            <button class="buttons TomA.TowNoneNone" onclick="changeAccount('Tom A. Tow')">Tom A. Tow</button>
-        </div>
-        <div class="menu" id="changebuttons" style="display: none;">
-          <button onclick="returnToMenu()" class="buttons">Return</button>
+            <p id="changeText">Select user to log in as:</p>
+            <button id="firstButton" class="menuButton LettuceB.FrankVegetarianGreens" onclick="changeAccount('Lettuce B. Frank')">Lettuce B. Frank</button>
+            <button class="menuButton KandyKanePeanutAllergy,LactoseIntolerantSweets" onclick="changeAccount('Kandy Kane')">Kandy Kane</button>
+            <button class="menuButton TomA.TowNoneNone" onclick="changeAccount('Tom A. Tow')">Tom A. Tow</button>
         </div>
 
         <!-- Bottom Nav Bar -->
@@ -106,10 +177,66 @@
             <img class="nav-icon" src=".\static\icons\book.svg">
             <div class="nav-label">Recipes</div>
           </a>
-          <a class="nav-item active" href=".\profile.html">
+          <!-- href=".\profile.html" -->
+          <a class="nav-item active" onclick="returnToMenu()" >
             <img class="nav-icon" src=".\static\icons\user-active.svg">
             <div class="nav-label">Profile</div>
           </a>
         </nav>
+
+        <div id="fake-keyboard" class="sticky-bottom" style="display: none; position: absolute; z-index: 1;">
+          <img src="./static/on-screen-keyboard-light.jpg" alt="" width="100%;" height="100%;">
+        </div>
+        
+        <script>
+          let element = document.getElementById("newName");
+          if (element != null){
+              element.addEventListener("focusin", function() {
+                  document.getElementById("fake-keyboard").style.display = "block";
+                  document.getElementById("addMenu").style.marginBottom = "0%";
+              }); 
+              element.addEventListener("focusout", function() {
+                  document.getElementById("fake-keyboard").style.display = "none";
+                  document.getElementById("addMenu").style.marginBottom = "20%";
+              }); 
+          }
+
+          element = document.getElementById("newRestrict");
+          if (element != null){
+              element.addEventListener("focusin", function() {
+                  document.getElementById("fake-keyboard").style.display = "block";
+                  document.getElementById("addMenu").style.marginBottom = "0%";
+              }); 
+              element.addEventListener("focusout", function() {
+                  document.getElementById("fake-keyboard").style.display = "none";
+                  document.getElementById("addMenu").style.marginBottom = "20%";
+              }); 
+          }
+
+          element = document.getElementById("newPref");
+          if (element != null){
+              element.addEventListener("focusin", function() {
+                  document.getElementById("fake-keyboard").style.display = "block";
+                  document.getElementById("addMenu").style.marginBottom = "0%";
+              }); 
+              element.addEventListener("focusout", function() {
+                  document.getElementById("fake-keyboard").style.display = "none";
+                  document.getElementById("addMenu").style.marginBottom = "20%";
+              }); 
+          }
+
+          element = document.getElementById("email");
+          console.log(element);
+          if (element != null){
+              element.addEventListener("focusin", function() {
+                  document.getElementById("fake-keyboard").style.display = "block";
+                  document.getElementById("privacy").style.display = "none";
+              }); 
+              element.addEventListener("focusout", function() {
+                  document.getElementById("fake-keyboard").style.display = "none";
+                  document.getElementById("privacy").style.display = "block";
+              }); 
+          }
+        </script>
     </body>
 </html>
