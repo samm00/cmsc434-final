@@ -31,7 +31,9 @@
 }
 
 .recipe-btm-buttons {
-    opacity: 0.25;
+    opacity: 1;
+    background-color: white !important;
+    border-color: #07a7a2 !important;
 }
 
 .recipe-searchbar{
@@ -42,19 +44,35 @@
 }
 
 .recipe-btm-buttons:hover {
-    opacity: 0.75;
+    opacity: 1;
 }
 
-.check {
+.check{
     padding: 5px;
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
 }
 
 a {
-    color: aliceblue;
+    color: #07a7a2;
 }
 
 a:hover {
     color: aliceblue;
+}
+
+
+.btn, .btn-outline-info {
+    border-color: #07a7a2 !important;
+    color: #07a7a2 !important;
+    background-size:contain;
+    border-width: 2px !important;
+}
+
+.btn:hover, .btn-outline-info:hover {
+    background-color: #07a7a2 !important;
+    color: aliceblue !important;
 }
 
 .search-button {
@@ -63,17 +81,6 @@ a:hover {
     border-color: #07a7a2 !important;
     margin: 0px 25px;
     width: 10%;
-}
-
-.btn, .btn-outline-info {
-    border-color: #07a7a2 !important;
-    color: #07a7a2 !important;
-    background-size:contain;
-}
-
-.btn:hover, .btn-outline-info:hover {
-    background-color: #07a7a2 !important;
-    color: aliceblue !important;
 }
 
 .added-to-list {
@@ -89,12 +96,26 @@ a:hover {
     margin: 25px;
     margin-bottom: 0px;
     padding: 0;
+    color: black;
 }
 
-textarea {
-    font-family: inherit;
-    font-size: 12px;
-    border: #07a7a2 solid 3px;
-    width: 100%;
-    border-radius: 5px;
-  }
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    display: flex;
+    align-items: center;
+}
+
+.list-group-item:first-child {
+    border-radius: 0;
+    border-top: none;
+}
+
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.btn-close{
+    padding: 0;
+    margin-left: auto;
+}
