@@ -145,3 +145,6 @@ a:hover {
     border: none;
   }
   
+.recipe-img > p {
+    margin-bottom: 0px;
+}
