@@ -1,5 +1,5 @@
 body {
-  background-color: #f7f7f7;
+  background-color: #fff;
 }
 
 img {
@@ -110,6 +110,17 @@ li {
   top: 10px;
 }
 
+.mag {
+  height: 30px;
+  width: 30px;
+  font-size: 14px;
+  padding: 0;
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  background-color: #000000dd;
+}
+
 .vertical-align {
   vertical-align: center;
 }
@@ -191,11 +202,11 @@ input:focus {
   outline: none !important;
 }
 
-.diet_tag {
+.diet_tag, .exst_diet_tag {
   display: none;
 }
 
-.diet_tag + label {
+.diet_tag + label, .exst_diet_tag + label {
   background-color: #eee;
   padding: 5px;
   padding-left: 8px;
@@ -205,15 +216,15 @@ input:focus {
   margin-top: 25px;
 }
 
-.diet_tag:checked + label {
+.diet_tag:checked + label, .exst_diet_tag:checked + label {
   background-color: #07a7a2;
 }
 
-.cat_tag {
+.cat_tag, .exst_cat_tag {
   display: none;
 }
 
-.cat_tag + label {
+.cat_tag + label, .exst_cat_tag + label {
   background-color: #eee;
   padding: 5px;
   padding-left: 8px;
@@ -222,7 +233,7 @@ input:focus {
   transition: 0.2s;
 }
 
-.cat_tag:checked + label {
+.cat_tag:checked + label, .exst_cat_tag:checked + label {
   background-color: #07a7a2;
 }
 
@@ -317,7 +328,7 @@ textarea {
 #change {
   height: 30px;
   width: 30px;
-  font-size: 18px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
   left: 0;
@@ -331,7 +342,7 @@ textarea {
 #delete {
   height: 30px;
   width: 30px;
-  font-size: 18px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
   left: 0;
