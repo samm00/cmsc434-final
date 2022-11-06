@@ -25,7 +25,7 @@
         </a>  
         <!-- Updates navbar to say the item name -->
         <h1>Chicken Noodle Soup</h1>
-        <h></h>
+        <button class="fav-btn" id="soup-fav" onclick="favorite('soup-fav')">❤</button> 
       </div>
     </nav>
   </div>
@@ -265,6 +265,13 @@ if (window.localStorage['notes-soup'] != null){
           addNote('soup',i, false)
         }
       }
+}
+
+if (window.localStorage['soup-fav'] == null || window.localStorage['soup-fav'] == 'false'){
+  window.localStorage['soup-fav'] = 'false' 
+} else {
+  var btn = document.getElementById('soup-fav')
+  btn.classList.add('fav-btn-selected')
 }
 
 const other = document.getElementById("notes-input");

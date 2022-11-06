@@ -34,21 +34,29 @@ function show(name) {
   document.getElementById('exst_old_img').style.width = '100%';
 
   var i = 0;
-  labs = Array.from(document.querySelectorAll('.diet_tag'));
-  labs.slice(labs.length / 2).forEach(function (item, index) {
+  labs = Array.from(document.querySelectorAll('.exst_diet_tag'));
+  labs.forEach(function (item, index) {
     item.checked = food.labs[i];
     i++;
   });
   i = 0;
-  cats = Array.from(document.querySelectorAll('.cat_tag'));
-  cats.slice(cats.length / 2).forEach(function (item, index) {
+  cats = Array.from(document.querySelectorAll('.exst_cat_tag'));
+  cats.forEach(function (item, index) {
     item.checked = food.categories[i];
     i++;
   });
 
-  console.log(food.labs);
-  f = Array.from(document.querySelectorAll('.diet_tag'));
-  console.log(f.slice(f.length / 2));
+  document.getElementById('exst_food').readOnly=true;
+
+  function edit_info(item, index) {
+    item.addEventListener('click', (event) =>
+      ((arg) => {
+        edit(arg);
+      })(food.food_name)
+    );
+  }
+  
+  edit_info(document.getElementById('change'));
 }
 
 function show_info(item, index) {
@@ -179,3 +187,29 @@ function add_listen_cancel(item, index) {
 }
 
 document.querySelectorAll('.cancel').forEach(add_listen_cancel);
+
+function edit(name) {
+  let changed_item = {
+    food_name: name,
+    img_src: document.getElementById('exst_old_img').src,
+    labs: Array.from(document.querySelectorAll('.exst_diet_tag')).map(
+      (item) => item.checked
+    ),
+    qty: document.getElementById('exst_qty').value,
+    qty_unit: document.getElementById('exst_qty_unit').value,
+    notes: document.getElementById('exst_notes').value,
+    categories: Array.from(document.querySelectorAll('.exst_cat_tag')).map(
+      (item) => [item.value, item.checked]
+    )
+  };
+
+  document.getElementById('info').style.display = 'none';
+
+  console.log(changed_item);
+
+  items[name] = changed_item;
+}
+
+function search(){
+  alert("not yet implemented");
+}

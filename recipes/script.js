@@ -135,3 +135,16 @@ function filterShow(){
     }
 }
 
+
+function favorite(id){
+    var selected = document.getElementById(id).classList.contains('fav-btn-selected')
+    var btn = document.getElementById(id)
+
+    if (selected){ /* unfavoriting */
+        btn.classList.remove('fav-btn-selected')
+        window.localStorage[id] = 'false';
+    } else {
+        btn.classList.add('fav-btn-selected')
+        window.localStorage[id] = 'true';
+    }
+}
