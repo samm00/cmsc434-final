@@ -46,6 +46,8 @@ function show(name) {
     i++;
   });
 
+  document.getElementById('exst_food').readOnly=true;
+
   function edit_info(item, index) {
     item.addEventListener('click', (event) =>
       ((arg) => {
