@@ -14,14 +14,15 @@ function todoChecked(id){
 
 function addToLocalStorage(id){
     console.log(id)
+    heading = document.querySelectorAll('h1')[0].innerText
     var elem = document.getElementById(id+"-text")
     var btn = document.getElementById(id+"-plus")
 
     if (!btn.classList.contains('added-to-list')){
-        if (window.localStorage.getItem('AddToList') == null || window.localStorage.getItem('AddToList') == "") {
-            window.localStorage.setItem('AddToList', elem.innerText);
+        if (window.localStorage.getItem('AddToList-' + heading) == null || window.localStorage.getItem('AddToList-' + heading) == "") {
+            window.localStorage.setItem('AddToList-' + heading, elem.innerText);
         } else {
-            window.localStorage.setItem('AddToList', window.localStorage['AddToList'] + ";" + elem.innerText);
+            window.localStorage.setItem('AddToList-' + heading, window.localStorage['AddToList-' + heading] + ";" + elem.innerText);
         }
     
         btn.innerText = '\u{2713}';
@@ -133,3 +134,4 @@ function filterShow(){
         btn.classList.add('btn-selected')
     }
 }
+

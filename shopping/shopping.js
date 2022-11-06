@@ -14,6 +14,24 @@ let lists = [
                 {name: "Pomegranate", done: false, id: "task-item-1-2", qty: "1"}],
         index: 3,
         deleted: false
+    },
+    {
+        name: "Apple Pie",
+        items: [],
+        index: 0,
+        deleted: true
+    },
+    {
+        name: "Chicken Noodle Soup",
+        items: [],
+        index: 0,
+        deleted: true
+    },
+    {
+        name: "Apple Cider",
+        items: [],
+        index: 0,
+        deleted: true
     }
 ]
 
@@ -36,7 +54,7 @@ if (!localStorage.getItem('shoppingList')) {
     lists = JSON.parse(localStorage.getItem('shoppingList'))
 }
 
-if (localStorage.getItem('AddToList')) {
+if (localStorage.getItem("AddToList-Apple Pie") || localStorage.getItem("AddToList-Chicken Noodle Soup") || localStorage.getItem("AddToList-Apple Cider")) {
     getRecipeItems()
 }
 
@@ -55,19 +73,28 @@ function populateList() {
 }
 
 function getRecipeItems() {
-    let recipeList = localStorage.getItem("AddToList")
-    let list = lists.length
-    let newItems = recipeList.split(';').map((item, index) => {
-        return {
-            name: item,
-            done: false,
-            id: "task-item-" + list + "-" + index,
-            qty: "not implemented"
+    let recipeList = [localStorage.getItem("AddToList-Apple Pie"), localStorage.getItem("AddToList-Chicken Noodle Soup"), localStorage.getItem("AddToList-Apple Cider")]
+
+    let list = 1
+
+    let newItems = recipeList.map(e => {
+        list++
+        if(e) {
+            lists[list].deleted = false
+            return e.split(';').map((item, index) => {
+                return {
+                    name: item,
+                    done: false,
+                    id: "task-item-" + list + "-" + index,
+                    qty: "not implemented"
+                }
+            })
         }
     })
 
-    newList = {name: "From Recipes", items: newItems, index: newItems.length, deleted: false}
-    lists.push(newList)
+    lists[2]['items'] = newItems[0]
+    lists[3]['items'] = newItems[1]
+    lists[4]['items'] = newItems[2]
 
     localStorage.setItem("AddToList", "")
     updateStorage()
@@ -186,6 +213,22 @@ function renderItem(item, listIndex) {
         } else {
             document.getElementById("fake-keyboard").style.display = "block"
         }
+    })
+    $("#" + item.id + "-qty").on('focusin', (event) => {
+        openKeyboard(event)
+    })
+    $("#" + item.id + "-qty").on('focusout', () => 
+        document.getElementById("fake-keyboard").style.display = "none"
+    )
+    $("#" + item.id + "-qty").on('keypress', function(e) {
+        if (e.keyCode == 13){
+            document.getElementById("fake-keyboard").style.display = "none"
+        } else {
+            document.getElementById("fake-keyboard").style.display = "block"
+        }
+    })
+    $("#" + item.id + "-name").on('change', function(e) {
+        
     })
 }
 
