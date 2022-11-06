@@ -82,6 +82,7 @@
     border-width: 1px;
     text-align: center;
     margin-left: auto;
+    color: inherit;
 }
 .list-item-qty:focus-within { 
     outline: none;
