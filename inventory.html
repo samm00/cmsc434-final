@@ -7,10 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="./styles.css" rel="stylesheet" />
     <link href="./inventory.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lexend"
-    />
   </head>
 
   <body>
@@ -99,7 +95,7 @@
 
             <label for="date">Purchased on: </label>
             <input type="date" id="date" />
-            <textarea id="notes" placeholder="Notes" rows="4"></textarea>
+            <textarea id="notes" placeholder="Notes" rows="3"></textarea>
           </div>
         </div>
         <div class="foot">
@@ -111,7 +107,9 @@
 
     <div class="card large" id="info">
       <button class="but" id="close">✕</button>
-      <div class="right">
+      <button class="but" id="change">🖉</button>
+      <button class="but" id="delete">🗑</button>
+      <div class="center">
         <input
           type="image"
           src="inventory/no_img.png"
