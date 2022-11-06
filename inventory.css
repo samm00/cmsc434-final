@@ -13,8 +13,8 @@ h1 {
   margin: 0;
   padding: 0;
   margin-bottom: 4px;
-  font-weight: 300;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 28px;
 }
 
 h3 {
@@ -31,7 +31,7 @@ h4 {
   background-color: #07a7a2;
   color: #eeeeee;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
 }
 
 .item-rows {
@@ -45,7 +45,7 @@ h4 {
   margin: 25px;
   margin-right: 0px;
   margin-bottom: 0px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .card:hover {
@@ -103,11 +103,11 @@ li {
 .add {
   height: 30px;
   width: 30px;
-  font-size: 26px;
+  font-size: 22px;
   padding: 0;
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: 10px;
+  top: 10px;
 }
 
 .vertical-align {
@@ -123,7 +123,7 @@ li {
   top: 0px;
   background-color: white;
   width: calc(100% - 100px);
-  height: calc(100% - 165px);
+  height: calc(100% - 175px);
   padding: 25px;
 }
 
@@ -146,7 +146,6 @@ li {
 }
 
 #old_img {
-  margin-bottom: 15px;
   border-radius: 5px;
   height: 75px;
   width: 75px;
@@ -156,20 +155,18 @@ li {
 }
 
 #exst_old_img {
-  margin-bottom: 15px;
   border-radius: 5px;
   height: 75px;
-  width: calc(100% - 110px) !important;
+  width: calc(100% - 100px) !important;
   border: none;
   margin-bottom: 10px;
   object-fit: cover;
   right: 0;
-  margin-top: -30px;
-  margin-right: 55px;
+  margin-top: -60px;
 }
 
 .right {
-    text-align: right;
+  text-align: right;
 }
 
 input {
@@ -244,18 +241,32 @@ input:focus {
 
 .done {
   position: absolute;
-  right: 25px;
-  bottom: 25px;
+  right: 16px;
+  bottom: 16px;
   background-color: #07a7a2;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 2px #07a7a2 solid;
 }
 
 .cancel {
   position: absolute;
-  left: 25px;
-  bottom: 25px;
+  left: 16px;
+  bottom: 16px;
+  border: 2px #c44 solid;
+  color: #c44;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.cancel:hover {
   background-color: #c44;
-  font-size: 18px;
+  color: #eee;
 }
 
 #new_qty {
@@ -286,26 +297,81 @@ textarea {
 }
 
 #date {
-  width: 112px;
+  width: 120px;
 }
 
 #close {
   height: 30px;
   width: 30px;
-  font-size: 28px;
+  font-size: 18px;
   padding: 0;
   left: 0;
-  background-color: #c44;
+  border: 2px #c44 solid;
+  color: #c44;
+  background-color: transparent;
+  margin-bottom: 30px;
+  margin-left: -9px;
+  margin-top: -9px;
 }
+
+#change {
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  margin-top: 31px;
+  margin-left: 16px;
+  position: absolute;
+  background-color: #07a7a2;
+  color: #eee;
+}
+
+#delete {
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  margin-top: 66px;
+  margin-left: 16px;
+  position: absolute;
+  background-color: #c44;
+  color: #eee;
+}
+
 
 #essentials .small {
-    background-color: #07a7a2;
-    border: 3px #07a7a2 solid;
-    box-shadow: none;
+  border: 2px #07a7a2 solid;
+  box-shadow: none;
 }
 
+#essentials img {
+  border-bottom: 2px #07a7a2 solid;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#essentials .small:hover {
+  background-color: #07a7a2;
+}
+
+
 #dairy .small {
-    background-color: #49c;
-    border: 3px #49c solid;
-    box-shadow: none;
+  border: 2px #49c solid;
+  box-shadow: none;
+}
+
+#dairy img {
+  border-bottom: 2px #49c solid;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#dairy .small:hover {
+  background-color: #49c;
 }
