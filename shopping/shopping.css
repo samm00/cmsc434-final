@@ -12,6 +12,7 @@
     width: 60%;
     font-size: 17pt;
     z-index: 1;
+    border-bottom: solid #07a7a2 3px
 }
 .list-name:focus-within { 
     outline: none;
@@ -19,6 +20,7 @@
 .list-name:disabled { 
     background: none;
     color: black;
+    border: none
 }
 
 .list-btn-holder {
@@ -34,6 +36,7 @@
     border: solid #07a7a2 2px;
     background: none;
     color: #07a7a2;
+    margin-top: 3px;
 }
 
 .delete-list {
@@ -41,6 +44,7 @@
     border: solid #ef4545 2px;
     border-radius: 6px;
     color: #ef4545;
+    margin-top: 3px;
 }
 
 .list-group-item {
@@ -58,7 +62,7 @@
     border-radius: 0;
 }
 
-.check{
+.check {
     height: 24px;
     width: 24px;
     vertical-align: middle;
@@ -68,6 +72,18 @@
     border: none;
 }
 .list-item-label:focus-within { 
+    outline: none;
+}
+
+.list-item-qty { 
+    width: 4em;
+    border-color: rgba(0,0,0, .125);;
+    border-radius: 5px;
+    border-width: 1px;
+    text-align: center;
+    margin-left: auto;
+}
+.list-item-qty:focus-within { 
     outline: none;
 }
 
@@ -86,16 +102,20 @@
 }
 
 .new-item {
-    border-width: 0px 0px 5px 0px !important;
+    border-width: 0px 0px 3px 0px !important;
     border-radius: 0px;
     border-color: #07a7a2 !important;
     font-size: 12pt;
     background: none !important;
+    padding-left: 2px;
 }
+
 .btn-add {
     color: #07a7a2;
     font-size: 20pt;
-    padding-right: 16px;
+    padding-left: 18px;
+    padding-right: 12px;
+    background: none !important;
 }
 
 #new-list-icon {

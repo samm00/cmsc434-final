@@ -1,11 +1,11 @@
 let lists = [
     {
         name: "Default List",
-        items: [{name: "Milk", done: false, id: "task-item-0-0", qty: "1"}, 
-                {name: "Eggs", done: false, id: "task-item-0-1", qty: "1"}, 
+        items: [{name: "Milk", done: false, id: "task-item-0-0", qty: "1 gal"}, 
+                {name: "Eggs", done: false, id: "task-item-0-1", qty: "1 dz"}, 
                 {name: "Bread", done: false, id: "task-item-0-2", qty: "2"}],
         index: 3,
-        deleted: false
+        deleted: false,
     },
     {
         name: "List 2",
@@ -61,7 +61,8 @@ function getRecipeItems() {
         return {
             name: item,
             done: false,
-            id: "task-item-" + list + "-" + index
+            id: "task-item-" + list + "-" + index,
+            qty: "not implemented"
         }
     })
 
@@ -77,7 +78,7 @@ function renderList(list, index) {
         return
     }
     let container = $('#list-container')
-    container.append(`<div class="mt-2 list-heading">
+    container.append(`<div class="mt-3 list-heading">
           <input id="list-name-` + index + `" type="text" class="list-name" value="` + list.name + `"disabled></input>
           <div class="list-btn-holder">
             <button id="btn-edit-` + index + `" class="edit-list">Edit</button>
@@ -86,10 +87,10 @@ function renderList(list, index) {
           </div>
         </div>`)
     container.append(`<div class="input-group mt-2">
-        <input type="text" class="form-control new-item" id="new-item-name-` + index + `" placeholder="Add new item...">
         <button id="add-` + index + `" class="input-group-text new-item btn-add input-group-append">
-          <img id ="iconadd-` + index +`" src=".\\static\\icons\\plus.svg">
+            <img id ="iconadd-` + index +`" src=".\\static\\icons\\plus.svg">
         </button>
+        <input type="text" class="form-control new-item" id="new-item-name-` + index + `" placeholder="Add new item...">
       </div>`)
     container.append('<ul id="shopping-list-' + index + '" class="shopping-list list-group"></ul>')
     $("#btn-done-" + index).hide();
@@ -98,12 +99,14 @@ function renderList(list, index) {
     $("#btn-edit-" + index).on('click', () => {
         $("#list-name-" + index).prop("disabled", false)
         $("#list-name-" + index).trigger("focusin");
+        $(".btn-close").show();
         $("#btn-edit-" + index).hide();
         $("#btn-done-" + index).show();
     })
     $("#btn-done-" + index).on('click', () => {
         $("#list-name-" + index).prop("disabled", true)
         $("#btn-done-" + index).hide();
+        $(".btn-close").hide();
         $("#btn-edit-" + index).show();
         list.name = $("#list-name-" + index).val()
         console.log(lists)
@@ -151,18 +154,19 @@ function renderList(list, index) {
 function renderItem(item, listIndex) {
     let list = $("#shopping-list-" + listIndex)
 
-    let close = '<button class="btn-close">'
-    let text = '<input id="' + item.id + '-name"type="text" class="list-item-label" value="' + item.name + '"></input>'
+    let close = '<button class="btn-close" style="display: none">'
+    let text = '<input id="' + item.id + '-name" type="text" class="list-item-label" value="' + item.name + '"></input>'
+    let quantity = '<input id="' + item.id + '-qty" type="text" class="list-item-qty" value="' + item.qty + '"></input>'
 
     let checkbox = ""
     let li = ""
 
     if (item.done) {
         checkbox = '<input type="checkbox" class="check completed" style="margin-right: 10px" checked></input>'
-        li = '<li id="'+ item.id + '" class="list-group-item completed">'+ checkbox + text + close +'</li>'
+        li = '<li id="'+ item.id + '" class="list-group-item completed">'+ checkbox + text + quantity + close +'</li>'
     } else {
         checkbox = '<input type="checkbox" class="check" style="margin-right: 10px"></input>'
-        li = '<li id="'+ item.id + '" class="list-group-item">'+ checkbox + text + close +'</li>'
+        li = '<li id="'+ item.id + '" class="list-group-item">'+ checkbox + text + quantity + close + '</li>'
     }
     
     list.append(li)
@@ -231,7 +235,7 @@ function addNew(target){
     }
 
     let id = "list-item-" + ++lists[listIndex].index;
-    let newItem = {name: input.trim(), done: false, id: id}
+    let newItem = {name: input.trim(), done: false, id: id, qty: 1}
 
     lists[listIndex]['items'].push(newItem);
 
