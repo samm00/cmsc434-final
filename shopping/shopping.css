@@ -3,6 +3,46 @@
     overflow-y: scroll;
 }
 
+.list-heading {
+    z-index: 2;
+}
+
+.list-name { 
+    border: none;
+    width: 60%;
+    font-size: 17pt;
+    z-index: 1;
+}
+.list-name:focus-within { 
+    outline: none;
+}
+.list-name:disabled { 
+    background: none;
+    color: black;
+}
+
+.list-btn-holder {
+    font-size: 13pt !important;
+    font-weight: normal;
+    float: right;
+    vertical-align: middle;
+    z-index: 3;
+}
+
+.edit-list {
+    border-radius: 6px;
+    border: solid #07a7a2 2px;
+    background: none;
+    color: #07a7a2;
+}
+
+.delete-list {
+    background: none;
+    border: solid #ef4545 2px;
+    border-radius: 6px;
+    color: #ef4545;
+}
+
 .list-group-item {
     border-left: none;
     border-right: none;
@@ -28,13 +68,6 @@
     border: none;
 }
 .list-item-label:focus-within { 
-    outline: none;
-}
-
-.list-name { 
-    border: none;
-}
-.list-name:focus-within { 
     outline: none;
 }
 

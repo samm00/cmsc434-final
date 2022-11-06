@@ -4,20 +4,34 @@ let lists = [
         items: [{name: "Milk", done: false, id: "task-item-0-0", qty: "1"}, 
                 {name: "Eggs", done: false, id: "task-item-0-1", qty: "1"}, 
                 {name: "Bread", done: false, id: "task-item-0-2", qty: "2"}],
-        index: 3
+        index: 3,
+        deleted: false
     },
     {
         name: "List 2",
         items: [{name: "Apples", done: true, id: "task-item-1-0", qty: "5"},
                 {name: "Oranges", done: true, id: "task-item-1-1", qty: "3"},
                 {name: "Pomegranate", done: false, id: "task-item-1-2", qty: "1"}],
-        index: 3
+        index: 3,
+        deleted: false
     }
-        
 ]
 
+function updateStorage() {
+    localStorage.setItem('shoppingList', JSON.stringify(lists))
+}
+
+function openKeyboard(event) {
+    document.getElementById("fake-keyboard").style.display = "block";
+    ypos = event.target.getBoundingClientRect().bottom;
+    console.log(ypos)
+    if (640 - ypos < 250) {
+        window.scroll(0, ypos-390, 0)
+    }
+}
+
 if (!localStorage.getItem('shoppingList')) {
-    localStorage.setItem('shoppingList', JSON.stringify({lists}));
+    updateStorage()
 } else {
     lists = JSON.parse(localStorage.getItem('shoppingList'))
 }
@@ -29,20 +43,10 @@ if (localStorage.getItem('AddToList')) {
 $(document).ready(function(){
     populateList();
 
-    $(".add-btn").click(e => addNew(e.target));
-
-    $(".new-item").on('keypress', function(e) {
-        if(e.keyCode == 13){
-            addNew(e.target)
-        }
-    })
-
     $("#new-list-btn").click(addList);
 });
 
-function updateStorage() {
-    localStorage.setItem('shoppingList', JSON.stringify(lists))
-}
+
 
 function populateList() {
     lists = JSON.parse(localStorage.getItem('shoppingList'))
@@ -53,7 +57,7 @@ function populateList() {
 function getRecipeItems() {
     let recipeList = localStorage.getItem("AddToList")
     let list = lists.length
-    let newItems = recipeList.split(',').map((item, index) => {
+    let newItems = recipeList.split(';').map((item, index) => {
         return {
             name: item,
             done: false,
@@ -61,7 +65,7 @@ function getRecipeItems() {
         }
     })
 
-    newList = {name: "From Recipes", items: newItems}
+    newList = {name: "From Recipes", items: newItems, index: newItems.length, deleted: false}
     lists.push(newList)
 
     localStorage.setItem("AddToList", "")
@@ -69,16 +73,79 @@ function getRecipeItems() {
 }
 
 function renderList(list, index) {
+    if (list.deleted) {
+        return
+    }
     let container = $('#list-container')
-    container.append('<h2 class="mt-2"><input id="list-name-' + index + '" type="text" class="list-name" value="' + list.name + '"></input></h2>')
+    container.append(`<div class="mt-2 list-heading">
+          <input id="list-name-` + index + `" type="text" class="list-name" value="` + list.name + `"disabled></input>
+          <div class="list-btn-holder">
+            <button id="btn-edit-` + index + `" class="edit-list">Edit</button>
+            <button id="btn-done-` + index + `" class="edit-list">Done</button>
+            <button id="btn-del-` + index + `" class="delete-list">Delete</button>
+          </div>
+        </div>`)
     container.append(`<div class="input-group mt-2">
         <input type="text" class="form-control new-item" id="new-item-name-` + index + `" placeholder="Add new item...">
         <button id="add-` + index + `" class="input-group-text new-item btn-add input-group-append">
-          <img src=".\\static\\icons\\plus.svg">
+          <img id ="iconadd-` + index +`" src=".\\static\\icons\\plus.svg">
         </button>
       </div>`)
     container.append('<ul id="shopping-list-' + index + '" class="shopping-list list-group"></ul>')
+    $("#btn-done-" + index).hide();
     list['items'].forEach((item) => renderItem(item, index))
+
+    $("#btn-edit-" + index).on('click', () => {
+        $("#list-name-" + index).prop("disabled", false)
+        $("#list-name-" + index).trigger("focusin");
+        $("#btn-edit-" + index).hide();
+        $("#btn-done-" + index).show();
+    })
+    $("#btn-done-" + index).on('click', () => {
+        $("#list-name-" + index).prop("disabled", true)
+        $("#btn-done-" + index).hide();
+        $("#btn-edit-" + index).show();
+        list.name = $("#list-name-" + index).val()
+        console.log(lists)
+    })
+    $("#btn-del-" + index).on('click', () => {
+        alert("This will permantently delete " + list.name + ".\n Are you sure? (Confirmation Functionality Not Implemented Yet.)")
+        lists[index].deleted = true;
+        updateStorage()
+        location.reload()
+    })
+
+
+    $("#list-name-" + index).on('focusin', (event) => {
+        openKeyboard(event)
+    })
+    $("#list-name-" + index).on('focusout', () => 
+        document.getElementById("fake-keyboard").style.display = "none"
+    )
+    $("#list-name-" + index).on('keypress', function(e) {
+        if(e.keyCode == 13){
+            document.getElementById("fake-keyboard").style.display = "none"
+        } else {
+            openKeyboard(e)
+        }
+    })
+    $("#new-item-name-" + index).on('focusin', (event) => {
+        openKeyboard(event)
+    })
+    $("#new-item-name-" + index).on('focusout', () => 
+        document.getElementById("fake-keyboard").style.display = "none"
+    )
+    $("#new-item-name-" + index).on('keypress', function(e) {
+        if(e.keyCode == 13){
+            addNew(e.target)
+            e.target.value = ""
+            $("#new-item-name-" + index).trigger("focusout")
+        } else {
+            document.getElementById("fake-keyboard").style.display = "block"
+        }
+    })
+
+    $("#add-" + index).click(e => addNew(e.target));
 }
 
 function renderItem(item, listIndex) {
@@ -104,7 +171,7 @@ function renderItem(item, listIndex) {
     $("#" + item.id + " .check").on('change', updateItem)
     $("#" + item.id + " .btn-close").on('click', deleteItem)
     $("#" + item.id + "-name").on('focusin', (event) => {
-        document.getElementById("fake-keyboard").style.display = "block";
+        openKeyboard(event)
     })
     $("#" + item.id + "-name").on('focusout', () => 
         document.getElementById("fake-keyboard").style.display = "none"
@@ -112,6 +179,8 @@ function renderItem(item, listIndex) {
     $("#" + item.id + "-name").on('keypress', function(e) {
         if(e.keyCode == 13){
             document.getElementById("fake-keyboard").style.display = "none"
+        } else {
+            document.getElementById("fake-keyboard").style.display = "block"
         }
     })
 }
@@ -153,8 +222,12 @@ function addNew(target){
         input = $(target).val();
         listIndex = $(target)[0].id.split('-')[3]
     } else {
-        listIndex = $(target)[0].id
+        listIndex = $(target)[0].id.split('-')[1]
         input = $("#new-item-name-" + listIndex).val();
+    }
+
+    if (input.trim() === "") {
+        return;
     }
 
     let id = "list-item-" + ++lists[listIndex].index;
@@ -173,8 +246,10 @@ function addList() {
     let list = {
         name: "New List",
         items: [],
-        index: 0
+        index: 0,
+        deleted: false
     }
     let index = lists.length;
+    lists.push(list)
     renderList(list, index)
 }
