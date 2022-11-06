@@ -43,6 +43,24 @@
     font-size: 12pt;
 }
 
+
+.time-filter {
+    border-width: 0px 0px 5px 0px !important;
+    border-radius: 0px;
+    border-color: #07a7a2 !important;
+    font-size: 12pt;
+    max-width: 50% !important;
+}
+
+.filter {
+    border: solid;
+    margin: 5px;
+    padding: 5px;
+    border-width: 1px !important;
+    border-radius: 6px !important;
+    border-color: gray;
+}
+
 .recipe-btm-buttons:hover {
     opacity: 1;
 }
@@ -70,7 +88,7 @@ a:hover {
     border-width: 2px !important;
 }
 
-.btn:hover, .btn-outline-info:hover {
+.btn:hover, .btn-outline-info:hover, .btn-selected {
     background-color: #07a7a2 !important;
     color: aliceblue !important;
 }
@@ -119,3 +137,11 @@ a:hover {
     padding: 0;
     margin-left: auto;
 }
+
+.collapse-btn {
+    font-weight: bold !important;
+    color: black !important;
+    background: none;
+    border: none;
+  }
+  

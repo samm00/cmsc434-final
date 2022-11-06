@@ -30,17 +30,6 @@
   <div class="recipe-body">
 
   <div class="recipe-search-bar input-group mb-2">
-      <!--
-        <input id="recipe-searchbar" class="form-control border border-3 border-top-0 border-start-0 border-end-0 w-75" type="text"
-          placeholder="Search" aria-label="default input example">
-        <button type="button" class="search-button btn btn-outline-success" onclick="search()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-            viewBox="0 0 16 16">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-          </svg>
-        </button>
-      -->
       <input type="text" class="form-control recipe-searchbar" id="recipe-searchbar" placeholder="Search">
       <button id="add" class="input-group-text search-button btn btn-outline-success">
         <span class="input-group-append" onclick="search()">
@@ -50,6 +39,50 @@
             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
         </svg>
       </button>
+      <button class = "btn search-button" onclick="filterShow()" id="filter-button">
+        <img src="./static/filter.png" id="filter-button-img" height="20px" width="20px">
+      </button>
+  </div>
+
+  <div class="container filter" id="filter-menu" style="display: none;">
+    <div class="row">
+      <div class="col-6">
+        <h6><b>Dietary Restrictions</b></h6>
+        <td class="check">
+          <input type="checkbox" class="check"> Gluten Free
+          <br>
+          <input type="checkbox" class="check"> Vegetarian
+          <br>
+          <input type="checkbox" class="check"> Vegan
+          <br>
+          <input type="checkbox" class="check"> NF
+          <br>
+          <input type="checkbox" class="check"> SF
+        </td>
+    </div>
+    <div class="col-6">
+      <h6><b>Cook Level</b></h6>
+      <input type="checkbox" class="check"> Easy
+      <br>
+      <input type="checkbox" class="check"> Intermediate
+      <br>
+      <input type="checkbox" class="check"> Expert
+    </div>
+    <div class="col-6">
+      <h6><b>Time</b></h6>
+      Min <input type="text" class="time-filter" id="timer-min" placeholder="Minutes" min="0" max="500">
+      <br>
+      Max <input type="text" class="time-filter" id="timer-max" placeholder="Minutes" min="0" max="500">
+    </div>
+    <div class="col-6">
+      <input type="checkbox" class="check"> Only Ingredients in Inventory
+    </div>
+    <br>
+    <div style="margin: auto; color: red;">
+      This feature has not been implemented.
+    </div>
+  </div>
+
   </div>
 
   <div class="all-recipes container">
@@ -121,5 +154,30 @@
 </body>
 
 <script src="recipes/script.js"></script>
+<script>
+    const other = document.getElementById("timer-min");
+  console.log(other)
+  if (other != null){
+      other.addEventListener("focusin", function() {
+          document.getElementById("fake-keyboard").style.display = "block";
+          window.scrollBy(0, 150);
+      }); 
+      other.addEventListener("focusout", function() {
+          document.getElementById("fake-keyboard").style.display = "none";
+      }); 
+  }
+
+  const other2 = document.getElementById("timer-max");
+  console.log(other2)
+  if (other2 != null){
+      other2.addEventListener("focusin", function() {
+          document.getElementById("fake-keyboard").style.display = "block";
+          window.scrollBy(0, 150);
+      }); 
+      other2.addEventListener("focusout", function() {
+          document.getElementById("fake-keyboard").style.display = "none";
+      }); 
+  }
+</script>
 
 </html>

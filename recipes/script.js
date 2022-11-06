@@ -73,8 +73,6 @@ if (element != null){
     element.addEventListener("select", function() {
         document.getElementById("fake-keyboard").style.display = "none";
     }); 
-
-
 }
 
 var count = 1
@@ -118,4 +116,20 @@ function deleteNote(recipe, r){
         window.localStorage['notes-'+recipe] = window.localStorage['notes-'+recipe].replace(";"+text, "")
     }
     r.parentNode.parentNode.removeChild(r.parentNode);
+}
+
+function filterShow(){
+    var selected = document.getElementById("filter-button-img") == null
+    var btn = document.getElementById("filter-button")
+    var menu = document.getElementById("filter-menu")
+
+    if (selected){
+        menu.style.display = "none"
+        btn.innerHTML = '<img src="./static/filter.png" id="filter-button-img" height="20px" width="20px">'
+        btn.classList.remove('btn-selected')
+    } else {
+        menu.style.display = "block"
+        btn.innerHTML = '<b>^<b>'
+        btn.classList.add('btn-selected')
+    }
 }
