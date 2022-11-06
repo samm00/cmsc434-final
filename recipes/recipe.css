@@ -97,8 +97,7 @@ a:hover {
     border-width: 0px 0px 5px 0px !important;
     border-radius: 0px;
     border-color: #07a7a2 !important;
-    margin: 0px 25px;
-    width: 10%;
+    width: 44px;
 }
 
 .added-to-list {
@@ -143,8 +142,8 @@ a:hover {
     color: black !important;
     background: none;
     border: none;
-  }
-  
-.recipe-img > p {
-    margin-bottom: 0px;
+}
+
+.heading {
+    height: 55px
 }
