@@ -25,7 +25,7 @@
         </a>  
         <!-- Updates navbar to say the item name -->
         <h1>Apple Cider</h1>
-        <h></h>
+        <button class="fav-btn" id="cider-fav" onclick="favorite('cider-fav')">❤</button> 
       </div>
     </nav>
   </div>
@@ -198,6 +198,16 @@ if (window.localStorage['notes-cider'] != null){
         }
       }
 }
+
+
+if (window.localStorage['cider-fav'] == null || window.localStorage['cider-fav'] == 'false'){
+  window.localStorage['cider-fav'] = 'false' 
+} else {
+  var btn = document.getElementById('cider-fav')
+  btn.classList.add('fav-btn-selected')
+}
+
+
 
 const other = document.getElementById("notes-input");
 console.log(other)

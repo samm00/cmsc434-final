@@ -25,7 +25,7 @@
         </a>  
         <!-- Updates navbar to say the item name -->
         <h1>Apple Pie</h1>
-        <h></h>
+        <button class="fav-btn" id="pie-fav" onclick="favorite('pie-fav')">❤</button> 
       </div>
     </nav>
   </div>
@@ -245,6 +245,14 @@ if (window.localStorage['notes-pie'] != null){
           addNote('pie',i, false)
         }
       }
+}
+
+
+if (window.localStorage['pie-fav'] == null || window.localStorage['pie-fav'] == 'false'){
+  window.localStorage['pie-fav'] = 'false' 
+} else {
+  var btn = document.getElementById('pie-fav')
+  btn.classList.add('fav-btn-selected')
 }
 
 const other = document.getElementById("notes-input");
