@@ -112,6 +112,10 @@ function renderList(list, index) {
             <button id="btn-done-` + index + `" class="edit-list">Done</button>
             <button id="btn-del-` + index + `" class="delete-list">Delete</button>
           </div>
+        </div>
+        <div id="confirm-` + index + `">Are you sure you want to delete? 
+            <button id="btn-confirm-no-` + index + `" class="edit-list confirm-no">No</button>
+            <button id="btn-confirm-yes-` + index + `" class="delete-list confirm-yes" >Yes</button>
         </div>`)
     container.append(`<div class="input-group mt-2">
         <button id="add-` + index + `" class="input-group-text new-item btn-add input-group-append">
@@ -121,6 +125,7 @@ function renderList(list, index) {
       </div>`)
     container.append('<ul id="shopping-list-' + index + '" class="shopping-list list-group"></ul>')
     $("#btn-done-" + index).hide();
+    $("#confirm-" + index).hide();
     list['items'].forEach((item) => renderItem(item, index))
 
     $("#btn-edit-" + index).on('click', () => {
@@ -139,10 +144,13 @@ function renderList(list, index) {
         console.log(lists)
     })
     $("#btn-del-" + index).on('click', () => {
-        alert("This will permantently delete " + list.name + ".\n Are you sure? (Confirmation Functionality Not Implemented Yet.)")
-        lists[index].deleted = true;
-        updateStorage()
-        location.reload()
+        $("#confirm-" + index).show();
+    })
+    $("#btn-confirm-no-" + index).on('click', () => {
+        $("#confirm-" + index).hide();
+    })
+    $("#btn-confirm-yes-" + index).on('click', () => {
+        deleteList(index);
     })
 
 
@@ -243,6 +251,12 @@ function deleteItem(){
     parent.remove();
 
     updateStorage()
+}
+
+function deleteList(index) {
+    lists[index].deleted = true;
+    updateStorage()
+    location.reload()
 }
 
 function updateItem() {
