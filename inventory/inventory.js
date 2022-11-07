@@ -214,7 +214,7 @@ function search(){
   alert("not yet implemented");
 }
 
-const element = document.querySelectorAll("input[type=text]");
+const element = document.querySelectorAll("input[type=text], textarea");
 console.log(element)
 
 function pop_up(element, idx) {
