@@ -213,3 +213,16 @@ function edit(name) {
 function search(){
   alert("not yet implemented");
 }
+
+const element = document.querySelectorAll("input[type=text]");
+console.log(element)
+
+function pop_up(element, idx) {
+  element.addEventListener("focusin", function() {
+    document.getElementById("fake-keyboard").style.display = "block";
+  }); 
+element.addEventListener("focusout", function() {
+    document.getElementById("fake-keyboard").style.display = "none";
+  }); 
+}
+element.forEach(pop_up)
