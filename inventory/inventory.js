@@ -68,7 +68,7 @@ function show_info(item, index) {
   );
 }
 
-document.querySelectorAll('.small').forEach(show_info);
+document.querySelectorAll('.inv-small').forEach(show_info);
 
 function close_box() {
   document.getElementById('info').style.display = 'none';
@@ -147,7 +147,7 @@ function done() {
     if (category[1]) {
       var child = document.createElement('li');
       child.innerHTML =
-        '<div class="card small"> <img src=' +
+        '<div class="inv-card inv-small"> <img src=' +
         new_item.img_src +
         ' alt="Avatar" /> <div class="container"> <h4><b>' +
         new_item.food_name +
